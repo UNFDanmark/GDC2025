@@ -1,0 +1,13 @@
+<buildprofiles xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/build-profiles.xsd"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <variables>
+        <showDownloadButton>true</showDownloadButton>
+        <download-page>https://github.com/Daxode/ECS-Workshop/wiki</download-page>
+        <download-title>Get Unity Project</download-title>
+        <header-logo>unflogo.svg</header-logo>
+    </variables>
+    <build-profile instance="hi"/>
+    <footer>
+        <copyright>Ungdommens Naturvidenskabelige Forening 2023-2024</copyright>
+    </footer>
+</buildprofiles>
