@@ -1,0 +1,3 @@
+# Opgave 2 (Kollision)
+
+Start typing here...

@@ -1,0 +1,3 @@
+# Dag 3 (Diverse)
+
+Start typing here...
