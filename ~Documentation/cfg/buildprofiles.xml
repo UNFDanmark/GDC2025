@@ -2,8 +2,8 @@
                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <variables>
         <showDownloadButton>true</showDownloadButton>
-        <download-page>https://github.com/Daxode/ECS-Workshop/wiki</download-page>
-        <download-title>Get Unity Project</download-title>
+        <download-page>https://github.com/UNFDanmark/GDC2024</download-page>
+        <download-title>Projekt Repository</download-title>
         <header-logo>unflogo.svg</header-logo>
     </variables>
     <build-profile instance="hi"/>
