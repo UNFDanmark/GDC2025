@@ -40,7 +40,7 @@ if (Input.GetKey(KeyCode.W))
 ```
 Det er også muligt at bruge `Input.GetKeyDown` som kun returnerer `true` den første frame hvor tasten er trykket ned. 
 ```C#
-if (Input.GetKey(KeyCode.W))
+if (Input.GetKeyDown(KeyCode.W))
 {
     forwardDirection = 1;
 }
@@ -49,5 +49,5 @@ if (Input.GetKey(KeyCode.W))
 
 ## Opgave 3
 - Lav en if-then-else der skriver “pew” i konsollen baseret på input
-- Slå “GameObject.Destroy()” op i Unitys dokumentation
+- Slå “GameObject.Destroy()” op i Unity's dokumentation
 - Prøv at bruge “GameObject.Destroy()” til at fjerne et objekt
