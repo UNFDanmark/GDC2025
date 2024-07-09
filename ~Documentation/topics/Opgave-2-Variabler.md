@@ -28,7 +28,7 @@ En anden vigtig detalje er at man ikke behøver at sætte en værdi. Man kalder 
 ```C#
 int alder;
 ```
-Men det jo ikke så sjovt at have en variabel uden at vide hvad den indeholder. Så det er en god ide at sætte en værdi med det samme. 
+Men det jo ikke så sjovt at have en variabel uden at vide hvad den indeholder. Så det er en god ide at sætte en værdi med det samme (når det er muligt). 
 
 ## Men hvor skal variablerne være?
 
@@ -72,6 +72,36 @@ Så har vi altså lavet variablen `alder` til at være `public` så andre kan f�
 
 ![VariableIInspector.gif](VariableIInspector.gif)
 
+## Lave sine egne typer?
+
+Jamen i har faktisk allerede skabt 2 af dem!
+Da i skrev:
+```C#
+public class PlayerScript : MonoBehavoiur 
+{
+    // Kode her
+}
+
+public class EnemyScript : MonoBehavoiur 
+{
+    // Kode her
+}
+```
+
+Så lavede I faktisk typerne `PlayerScript` og `EnemyScript`, som begge er `MonoBehaviour`. 
+Det at det er et `MonoBehaviour` betyder at man kan smide dem på et GameObjekt:
+
+![MonoBehaviour.gif](MonoBehaviour.gif)
+
+Som eksempel betyder det også at man kan lave en variable med de typer vi har lavet, altså:
+```C#
+public PlayerScript myPlayer;
+```
+Og fordi vi har skrevet `public` kan den også tilgås i vores editor:
+
+![UnityTypeInInspector.gif](UnityTypeInInspector.gif)
+
+
 ## Kommentarer
 I koden ovenfor har vi også brugt noget der hedder kommentarer. Kommentarer er tekst i koden som ikke bliver kørt. De er der for at forklare hvad koden gør.
 I C# skriver `//` for at lave en kommentar. Hvor at alt efter `//` vil blive ignoreret af computeren.
@@ -82,3 +112,11 @@ I C# skriver `//` for at lave en kommentar. Hvor at alt efter `//` vil blive ign
 ## Opgave 2
 1. Lav en variabel til at styre spillerens hastighed og gør så man kan tilgå den i editoren
 2. Lav en variabel til at håndtere cooldown af skud og gør så man kan tilgå den i editoren
+
+Når i er færdige med at gentage hvad vi har lavet og lave opgaven, bør det se ud som under.
+
+![Unity_52PI0yyFzy.gif](Unity_52PI0yyFzy.gif)
+
+<note>
+Bemærk at variabler ikke bliver gemt når i stopper spillet. Så hvis i vil gemme en variabel, så husk at ændre den i editoren før i trykker på 'Play' knappen.
+</note>
