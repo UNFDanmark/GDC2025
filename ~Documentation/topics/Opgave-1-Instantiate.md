@@ -8,7 +8,7 @@ Ved at drag-and-droppe på denne måde laver man det man kalder et *prefab*, det
 som det originale objekt som kan genbruges forskellige steder.
 Hvis man ændrer på egenskaberne i prefabben så ændrer det også på alle steder hvor man bruger den.
 
-\\*insert gif of making prefab here*
+![prefab.gif](prefab.gif)
 ## Instantiering
 
 
