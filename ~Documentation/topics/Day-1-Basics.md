@@ -1,3 +1,3 @@
 # Dag 1 (Basics)
 
-Start typing here...
+Indsæt et summery her, hvis det ikke er gjort skrig af Daniel, han er doven!

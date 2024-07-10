@@ -25,6 +25,10 @@ Når i har åbnet projektet, vil i se Unity brugerfladen. Her er nogle af de vig
 5. **Project**: Her kan i se alle filer i jeres projekt.
 6. **Console**: Her kan i se fejl og beskeder fra Unity.
 
+## Projekt setup
+
+Hvis vi kigger i projekt vinduet kan vi se at vi har allerede tilføjet nogle filer for jer. Der i blandt en scene for hver faggruppe og en general GameScene som kan
+
 ## Spiller Objektet
 
 I jeres scene vil i kunne højre klikke og vælge "Create Cube" for at lave et nyt objekt. Dette objekt vil være jeres spiller objekt. 
