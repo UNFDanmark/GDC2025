@@ -2,16 +2,40 @@
 
 ## Prefabs
 For at kunne skyde skal vi først lave en patron vi kan skyde med. Start med at lave en sphere og skaler den ned så den er en rimelig størrelse.
-For at patronen senere kan skydes afsted får den også en ````Rigidbody```` component. Dernæst vil vi gerne sørge for at vi
+For at patronen senere kan skydes afsted får den også en `Rigidbody` component. Dernæst vil vi gerne sørge for at vi
 kan genbruge det patron objekt som vi lige har lavet, det gør vi nemt ved at vælge patronen og drag-and-droppe den ned i vores project-vindue.
 Ved at drag-and-droppe på denne måde laver man det man kalder et *prefab*, det er en kopi med alle de samme egenskaber
 som det originale objekt som kan genbruges forskellige steder.
 Hvis man ændrer på egenskaberne i prefabben så ændrer det også på alle steder hvor man bruger den.
 
-\\*insert gif of making prefab here*
+Nu hvor vi har et prefab kan vi slette den originale patron uden at at få problemer senere.
+
+*insert gif of making prefab here*
 ## Instantiering
+Vi åbner vores script hvor vi skrev rotationskoden siden det er rotationen der styrer retningen vi skal skyde i.
+For at kunne skyde skal vi kunne lave nye objekter mens spillet kører, det gør man med funtionen [`Instantiate`](https://docs.unity3d.com/ScriptReference/Object.Instantiate.html).
+`Instantiate` skal bruge en reference til det objekt man gerne vil lave, så vi laver en `public` variabel `bullet` af typen `GameObject` som 
+kan indeholde referencen. Vi kan nu drag-and-droppe vores prefab af patronen over i feltet for `bullet. 
 
+*gif af at drag-and-droppe prefab ind i variabel*
 
+Tilbage i vores script kan vi nu i `Update`-funktionen kalde `Instantiate` med `bullet` som parameter.
+```C#
+void Update()
+{
+    Instantiate(bullet);
+    
+}
+```
+Hvis vi nu starter spillet kan vi se at der kommer massere af patroner, men de starter alle der hvor den originale patron var sat.
+Heldigvis kan man også fortælle `Instantiate` hvor den skal lave det nye objekt henne, når man gør dette skal man dog osgå give en rotation med således at det nye objekt er roteret som man vil have det. 
+Til at give positionen hvor vi vil lave de nye patroner bruger vi bare `transform.position`, og som rotation bruger vi `quaternion.identity`, som vist nedenunder.
+```C#
+void Update()
+{
+    Instantiate(bullet,transform.position,quaternion.identity);
+}
+```
 ## Input GetKey
 `Input` klassen har også en metode [`GetKey`](https://docs.unity3d.com/ScriptReference/Input.GetKey.html) som tager en `KeyCode` som argument.
 `KeyCode` er en type der repræsenterer en tast på tastaturet.
@@ -31,8 +55,17 @@ if (Input.GetKeyDown(KeyCode.W))
     print("W er trykket en gang");
 }
 ```
+Vi kan sætte en `if`-statement rundt om kaldet til `Instantiate` således at man kun skydder når man trykker på mellemrumstasten.
+```C#
+if (Input.GetKeyDown(KeyCode.Space))
+{
+    Instantiate(bullet,transform.position,quaternion.identity);
+}
+```
 
 ## Physics Layer
+Som man kan se når man starter spillet, så støder de patroner som man skyder ind i spilleren selv. Til at løse det problem
+gør vi brug af det som Unity kalder Physics layers. Disse layers dikterer hvad der kan kollidere med hvad
 
 ## Timer
 
