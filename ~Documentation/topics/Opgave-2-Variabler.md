@@ -1,4 +1,4 @@
-# Opgave 2 (Variabler)
+# Del 2 (Variabler)
 
 ## Variabler og typer
 Når man skriver kode får man ofte brug for at gemme nogle værdier. Disse gemmepladser kalder vi variabler.

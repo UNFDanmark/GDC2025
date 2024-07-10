@@ -1,4 +1,4 @@
-# Beskrivelse (Krop og kode)
+# Del 1 (Krop og kode)
 
 Velkommen, dette er starten af dit eventyr for at lære Unity!
 Vi ville nu starte med åbne projektet og se på nogle af de grundlæggende ting i Unity.

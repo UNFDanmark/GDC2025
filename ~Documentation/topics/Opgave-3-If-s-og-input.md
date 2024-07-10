@@ -1,4 +1,4 @@
-# Opgave 3 (If&apos;s og input)
+# Del 3 (If&apos;s og input)
 
 ## Bonus Info: C# `if` sætninger
 

@@ -1,4 +1,4 @@
-# Opgave 2 (UI)
+# Del 2 (UI)
 
 ## Lav Game Over Canvas
 

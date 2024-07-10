@@ -1,4 +1,4 @@
-# Opgave 1 (3D og Lyd)
+# Del 1 (3D og Lyd)
 
 ## Download Assets
 Alle resourcer som vi skal bruge i denne undervisning kan findes her:

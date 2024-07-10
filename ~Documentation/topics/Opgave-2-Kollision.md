@@ -1,4 +1,4 @@
-# Opgave 2 (Kollision)
+# Del 2 (Kollision)
 
 ## Fjenden bliver ramt af OnCollisionEnter
 

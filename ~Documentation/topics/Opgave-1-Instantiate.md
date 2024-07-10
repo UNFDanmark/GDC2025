@@ -1,4 +1,4 @@
-# Opgave 1 (Instantiate)
+# Del 1 (Instantiate)
 
 ## Lav Prefab
 
