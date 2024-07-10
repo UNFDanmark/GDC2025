@@ -36,6 +36,9 @@ I kan flytte spilleren ved at klikke på objektet og trække det rundt i scenen.
 
 ![create-cube.png](create-cube.png)
 
+Vi ville også gerne bruge et gulv og til det er det nice at have et texture til det også hvilke kan downloades her:
+<resource src="grass.png"/>
+
 ## Kode
 
 Lav et script til spilleren ved at klikke på spilleren i hierarkiet og derefter klikke på "Add Component" i inspektoren.
