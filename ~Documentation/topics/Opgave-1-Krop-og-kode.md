@@ -27,7 +27,7 @@ Når I har åbnet projektet, vil i se Unity brugerfladen. Her er nogle af de vig
 
 ## Projekt setup
 
-Hvis vi kigger i projekt vinduet kan vi se at vi allerede har tilføjet nogle filer for jer, deriblandt en scene for hver faggruppe, og en general GameScene som kan.
+Hvis vi kigger i projekt vinduet kan vi se at vi allerede har tilføjet nogle filer for jer, deriblandt en scene for hver faggruppe, og en general GameScene hvor det endelige spil skal laves.
 
 ## Spiller Objektet
 
