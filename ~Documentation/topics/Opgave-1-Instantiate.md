@@ -1,6 +1,8 @@
 # Opgave 1 (Instantiate)
 
-Start typing here...
+## Lav Prefab
+
+
 
 ## Input GetKey
 `Input` klassen har også en metode [`GetKey`](https://docs.unity3d.com/ScriptReference/Input.GetKey.html) som tager en `KeyCode` som argument.
@@ -22,6 +24,15 @@ if (Input.GetKeyDown(KeyCode.W))
 }
 ```
 
+## Physics Layer
+
+## Timer
+
 ## Opgave 1
 - Slå “GameObject.Destroy()” op i Unity's dokumentation
-- Prøv at bruge “GameObject.Destroy()” til at fjerne et objekt
+- Prøv at bruge “GameObject.Destroy()” til at fjerne bullets efter et stykke tid
+
+/-- Indsæt gif her --/
+
+## Bonus Opgave
+Tænk over hvordan man ville kunne blive ved med at skyde uden at give slip på skyde knappen

@@ -1,3 +1,3 @@
 # Dag 3 (Diverse)
 
-Start typing here...
+Indsæt et summery her, hvis det ikke er gjort skrig af Daniel, han er doven!
