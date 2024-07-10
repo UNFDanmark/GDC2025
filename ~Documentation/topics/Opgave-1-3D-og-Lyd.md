@@ -1,5 +1,9 @@
 # Opgave 1 (3D og Lyd)
 
+## Download Assets
+Alle resourcer som vi skal bruge i denne undervisning kan findes her:
+- <resource src="ContentGDC2024.zip"/>
+
 ## Opsætning af Model på Spiller
 
 Først og fremmest skal vi bruge modellen samt dens texture. Dem kan vi finde her:
@@ -9,7 +13,9 @@ Først og fremmest skal vi bruge modellen samt dens texture. Dem kan vi finde he
 ## Opgave 1A
 - Enemy har skal få skelet modellen
 
-Du kan downloade skellet her. (<resource src="Skeleton_Minion.fbx">Skelet Model</resource>, og <resource src="skeleton_texture.png">Skelet Texture</resource>)
+Du kan downloade skellet her:
+- <resource src="Skeleton_Minion.fbx">Skelet Model</resource>
+- <resource src="skeleton_texture.png">Skelet Texture</resource>
 
 ## Opsætning af Animation
 
