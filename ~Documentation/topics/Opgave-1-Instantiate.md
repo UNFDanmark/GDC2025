@@ -1,7 +1,15 @@
 # Del 1 (Instantiate)
 
-## Lav Prefab
+## Prefabs
+For at kunne skyde skal vi først lave en patron vi kan skyde med. Start med at lave en sphere og skaler den ned så den er en rimelig størrelse.
+For at patronen senere kan skydes afsted får den også en ````Rigidbody```` component. Dernæst vil vi gerne sørge for at vi
+kan genbruge det patron objekt som vi lige har lavet, det gør vi nemt ved at vælge patronen og drag-and-droppe den ned i vores project-vindue.
+Ved at drag-and-droppe på denne måde laver man det man kalder et *prefab*, det er en kopi med alle de samme egenskaber
+som det originale objekt som kan genbruges forskellige steder.
+Hvis man ændrer på egenskaberne i prefabben så ændrer det også på alle steder hvor man bruger den.
 
+\\*insert gif of making prefab here*
+## Instantiering
 
 
 ## Input GetKey
