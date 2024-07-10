@@ -27,7 +27,7 @@ Når I har åbnet projektet, vil i se Unity brugerfladen. Her er nogle af de vig
 
 ## Projekt setup
 
-Hvis vi kigger i projekt vinduet kan vi se at vi allerede har tilføjet nogle filer for jer, deriblandt en scene for hver faggruppe, og en general GameScene som kan.
+Hvis vi kigger i projekt vinduet kan vi se at vi allerede har tilføjet nogle filer for jer, deriblandt en scene for hver faggruppe, og en general GameScene hvor det endelige spil skal laves.
 
 ## Spiller Objektet
 
@@ -37,7 +37,7 @@ I kan flytte spilleren ved at klikke på objektet og trække det rundt i scenen.
 ![create-cube.png](create-cube.png)
 
 Vi ville også gerne bruge et gulv og til det er det nice at have et texture til det også hvilke kan downloades her:
-<resource src="grass.png"/>
+- <resource src="grass.png"/>
 
 ## Kode
 

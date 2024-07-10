@@ -10,7 +10,8 @@ Hvis man ændrer på egenskaberne i prefabben så ændrer det også på alle ste
 
 Nu hvor vi har et prefab kan vi slette den originale patron uden at at få problemer senere.
 
-*insert gif of making prefab here*
+![prefab.gif](prefab.gif)
+
 ## Instantiering
 Vi åbner vores script hvor vi skrev rotationskoden siden det er rotationen der styrer retningen vi skal skyde i.
 For at kunne skyde skal vi kunne lave nye objekter mens spillet kører, det gør man med funtionen [`Instantiate`](https://docs.unity3d.com/ScriptReference/Object.Instantiate.html).
