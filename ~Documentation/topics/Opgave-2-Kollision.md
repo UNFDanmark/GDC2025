@@ -1,6 +1,11 @@
 # Del 2 (Kollision)
 
-## Fjenden bliver ramt af OnCollisionEnter
+## Påvirk andre objekter
+Nu hvor vi kan lave patroner vil vi gerne have at patronerne også flyver frem så man rigtig skyder. 
+
+
+## OnCollisionEnter
+
 
 ## GameObject.Destroy
 
