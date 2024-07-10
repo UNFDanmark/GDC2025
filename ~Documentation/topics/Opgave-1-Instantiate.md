@@ -25,7 +25,6 @@ Tilbage i vores script kan vi nu i `Update`-funktionen kalde `Instantiate` med `
 void Update()
 {
     Instantiate(bullet);
-    
 }
 ```
 Hvis vi nu starter spillet kan vi se at der kommer massere af patroner, men de starter alle der hvor den originale patron var sat.
@@ -72,11 +71,39 @@ klikke på "Add layer..." knappen i Layer dropdown menuen under objektets navn.
 
 *img with creation of player & bullet layers*
 
+Når man har lavet lagene skal man huske at tildele dem til ens `gameObjects`, det gør man samme sted som hvis man skulle lave nye lag.
+
 Som vist herunder kan vi i project managerens Physics sektion deaktivere kollisioner mellem Player og Bullet lagende.
 
 *gif unchecking the collision mask between player & bullet*
 
-## Timer
+
+## Cooldown
+Vi tilføjer en colldown periode mellem vores skud, således at der skal være gået mindst en rum tid fra at man har skudt 
+til at man kan skyde igen. Til vores cooldown skal vi bruge to variable til at at holde styr på 1) hvor lang cooldownen
+er go 2) hvor lang tid der er tilbage af cooldownen efter man har skudt.
+
+```C#
+public float cooldownTime = 0.2f;
+float leftoverCooldown;
+```
+Inde i den `if`-statement vi satte rundt om `Instantiate` kan vi nu sætte `leftoverCooldown` til at være lig med `cooldownTime`
+Desuden skal vi ændre på betinglesen for `if`-statementet således at vi kun kan skyde når `leftoverCooldown` er mindre eller lig 0 som vist herunder.
+
+```C#
+if (Input.GetKeyDown(KeyCode.Space) && leftoverCooldown <= 0) 
+{
+    Instantiate(bullet,transform.position,quaternion.identity);
+    leftoverCooldown = cooldownTime;
+}
+```
+
+Nu kan man, hvis man starter spillet, kun skyde en enkelt gang, fordi vi aldrig gør `leftoverCooldown` mindre. Heldigvis 
+kræver det kun en enkelt linje kode før `if`-statementet hvor vi gør variablen mindre.
+```C#
+leftoverCooldown = leftoverCooldown - Time.deltaTime;
+```
+`Time.deltaTime` er den mængde af tid der er gået siden sidste frame.
 
 ## Opgave 1
 - Slå “GameObject.Destroy()” op i Unity's dokumentation
