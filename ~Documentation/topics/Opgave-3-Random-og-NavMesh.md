@@ -27,7 +27,7 @@ Vi skal dog stadig fortælle den hvor den skal gå hen. Det kan vi heldigvis nem
 SetDestination tager imod en Vector3 position, som for eksempel vores spillers position. 
 I vores enemy script skal vi hive fat i vores **Nav Mesh Agent**, brug enten **GetComponent<NavMeshAgent>()**,
 eller lav en public NavMeshAgent og drag and drop den i Unity. 
-Vi skal hive fat i vores player, her skal vi igen gøre brug af **Tags**, heldigvis har unity allerede et player tag.
+Vi skal have en reference til vores player, her skal vi igen gøre brug af **Tags**, heldigvis har unity allerede et player tag.
 Giv vores playerobject player tagget og brug **FindWithTag("Player")**.
 
 **INDSÆT BILLEDE AF AT VÆLGE PLAYER TAG PÅ PLAYER OBJECT**
@@ -50,7 +50,23 @@ void Update(){
 
 ## Random
 Det er jo ikke så spændende at der kun er en fjende.
+Til det laver vi et enemySpawner object. Siden det ikke er noget vi skal kunne se, giver det mening at lave et empty object. 
+
+**INDSÆT BILLEDE AF MENU MED MUS PÅ EMPTY OBJECT**
+
+Så laver vi et enemySpawnerScript på vores enemySpawner.
+I det skal vi have en reference til det object vi gerne vil spawne, altså vores enemyobject.
 Som med vores bullet kan vi spawne flere med **Instantiate()**. 
+```c#
+public GameObject spawnObject
+
+void Update(){
+    Initiate(spawnObject, transform.position, Quaternion.identity);
+}
+```
+
+**INDSÆT GIF AF SPAWNING FJENDER**
+
 Det ville dog være kedeligt hvis de alle spawnede det sammes sted hver gang. 
 Så hvad nu hvis vi generede nogle tilfælge positioner til vores fjender. 
 Her kan vi bruge **Random.Range** der giver os et tilfældigt tal mellem 2 tal vi vælger. 
