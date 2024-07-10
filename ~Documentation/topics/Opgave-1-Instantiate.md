@@ -66,7 +66,15 @@ if (Input.GetKeyDown(KeyCode.Space))
 
 ## Physics Layer
 Som man kan se når man starter spillet, så støder de patroner som man skyder ind i spilleren selv. Til at løse det problem
-gør vi brug af det som Unity kalder Physics layers. Disse layers dikterer hvad der kan kollidere med hvad
+gør vi brug af det som Unity kalder Physics layers. Disse layers dikterer hvad der kan kollidere med hvad, så vi skal bruge
+nogle layers til at repræsentere vores spiller og patroner. Man kan tilføje nye physics layers ved at vælge et objekt og
+klikke på "Add layer..." knappen i Layer dropdown menuen under objektets navn.
+
+*img with creation of player & bullet layers*
+
+Som vist herunder kan vi i project managerens Physics sektion deaktivere kollisioner mellem Player og Bullet lagende.
+
+*gif unchecking the collision mask between player & bullet*
 
 ## Timer
 
