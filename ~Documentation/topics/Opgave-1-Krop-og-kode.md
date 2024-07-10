@@ -12,11 +12,11 @@ For at starte skal i åbne Unity Hub og åbne projektet "Unity Basics" som vi ha
 
 ![unityhub.png](unityhub.png)
 
-Når i har åbnet projektet, er i klar til at begynde at arbejde i Unity.
+Når I har åbnet projektet, er I klar til at begynde at arbejde i Unity.
 
 ## Unity brugerflade
 
-Når i har åbnet projektet, vil i se Unity brugerfladen. Her er nogle af de vigtigste elementer i brugerfladen:
+Når I har åbnet projektet, vil i se Unity brugerfladen. Her er nogle af de vigtigste elementer i brugerfladen:
 
 1. **Scene view**: Her kan i se jeres spil og redigere det.
 2. **Game view**: Her kan i se jeres spil som det vil se ud for spilleren.
@@ -27,7 +27,7 @@ Når i har åbnet projektet, vil i se Unity brugerfladen. Her er nogle af de vig
 
 ## Projekt setup
 
-Hvis vi kigger i projekt vinduet kan vi se at vi har allerede tilføjet nogle filer for jer. Der i blandt en scene for hver faggruppe og en general GameScene som kan
+Hvis vi kigger i projekt vinduet kan vi se at vi allerede har tilføjet nogle filer for jer, deriblandt en scene for hver faggruppe, og en general GameScene som kan.
 
 ## Spiller Objektet
 
