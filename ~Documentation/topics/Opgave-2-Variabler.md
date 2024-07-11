@@ -18,17 +18,17 @@ Men der findes mange flere typer end `int`. Her er nogle af de mest brugte:
 - `string` er tekst (f.eks. kan man skrive `string navn = "Mikkel";`)
 - `bool` er sandt/falsk (f.eks. kan man skrive `bool erVoksen = true;`)
 
-I Unity er der også nogle specielle typer som er specifikke for Unity:
+Der er også nogle specielle typer som der kun findes i Unity:
 - `Vector3` er en 3D vektor
 - `GameObject` er et Unity objekt
 - `Transform` er en position, rotation og skala
 
-Disse typer kommer vi snart til at bruge. Men vi kommer ikke selv til at fokusere på at lave vores egne typer (endnu). Men vigtigt at huske at det også er en mulighed.
+Disse typer kommer vi snart til at bruge. Men vi kommer ikke selv til at fokusere på at lave vores egne typer endnu. Men det er vigtigt at huske at det er en mulighed.
 En anden vigtig detalje er at man ikke behøver at sætte en værdi. Man kalder dette for en variabel deklaration.
 ```C#
 int alder;
 ```
-Men det jo ikke så sjovt at have en variabel uden at vide hvad den indeholder. Så det er en god ide at sætte en værdi med det samme (når det er muligt). 
+Men det er jo ikke så sjovt at have en variabel uden at vide hvad den indeholder. Det er dog en god ide at sætte en værdi med det samme når det er muligt. 
 
 ## Men hvor skal variablerne være?
 
@@ -61,14 +61,14 @@ public class PlayerScript : MonoBehaviour
 Hvis i bemærker, så kan i se at reglen er at variablerne er tilgængelige inde mellem hver `{}`. Så fordi `JegVirkerKunIStart` er inde i `Start` metoden's `{}`, så kan den ikke tilgås i `Update` metoden.
 
 ## Tilgængelighed i editoren
-I C# kan man definere en variable der lever udenfor en metode som `public`. Det betyder at andre steder kan tilgå den. Så kigger vi på koden:
+I C# kan man definere en variabel der lever udenfor en metode som `public`. Det betyder at andre steder kan tilgå den. Så kigger vi på koden:
 ```C#
 public class PlayerScript : MonoBehaviour
 {
     public int alder = 10;
 }
 ```
-Så har vi altså lavet variablen `alder` til at være `public` så andre kan få værdien. I Unity betyder det også at den kan fås fat i fra Editoren. Så vi selv kan justere den.
+Her har vi lavet variablen `alder` så den er `public` hvilket betyder at andre kan få værdien. I Unity betyder det også at den kan fås fat i fra Editoren så vi kan justere den ude fra vores script.
 
 ![VariableIInspector.gif](VariableIInspector.gif)
 
@@ -88,12 +88,12 @@ public class EnemyScript : MonoBehavoiur
 }
 ```
 
-Så lavede I faktisk typerne `PlayerScript` og `EnemyScript`, som begge er `MonoBehaviour`. 
-Det at det er et `MonoBehaviour` betyder at man kan smide dem på et GameObjekt:
+Lavede I faktisk typerne `PlayerScript` og `EnemyScript`, som begge er `MonoBehaviour`. 
+Det at det er et `MonoBehaviour` betyder at man kan smide dem på et GameObjekt som et component:
 
 ![MonoBehaviour.gif](MonoBehaviour.gif)
 
-Som eksempel betyder det også at man kan lave en variable med de typer vi har lavet, altså:
+Som eksempel betyder det at man også kan lave en variabel med en af de typer vi har lavet, altså:
 ```C#
 public PlayerScript myPlayer;
 ```
@@ -104,7 +104,7 @@ Og fordi vi har skrevet `public` kan den også tilgås i vores editor:
 
 ## Kommentarer
 I koden ovenfor har vi også brugt noget der hedder kommentarer. Kommentarer er tekst i koden som ikke bliver kørt. De er der for at forklare hvad koden gør.
-I C# skriver `//` for at lave en kommentar. Hvor at alt efter `//` vil blive ignoreret af computeren.
+I C# skriver man `//` for at lave en kommentar, hvor alt efter `//` vil blive ignoreret af computeren.
 ```C#
 // Dette er en kommentar
 ```
@@ -118,5 +118,5 @@ Når i er færdige med at gentage hvad vi har lavet og lave opgaven, bør det se
 ![Unity_52PI0yyFzy.gif](Unity_52PI0yyFzy.gif)
 
 <note>
-Bemærk at variabler ikke bliver gemt når i stopper spillet. Så hvis i vil gemme en variabel, så husk at ændre den i editoren før i trykker på 'Play' knappen.
+Bemærk at variabler ikke bliver gemt når i stopper spillet. Hvis i vil gemme en variabel, så husk at ændre den i editoren før i trykker på 'Play' knappen.
 </note>

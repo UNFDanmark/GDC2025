@@ -1,9 +1,9 @@
 # Del 3 (If&apos;s og input)
 
-## Bonus Info: C# `if` sætninger
+## Bonus Info: C# `if`-statements
 
-Det er tid til at introducere `if` sætninger. 
-`if` sætninger er en måde at lave en beslutning i koden. 
+Det er tid til at introducere `if`-statements. 
+`if`-statements er en måde at lave en beslutning i koden. 
 Hvis en betingelse er sand, så udføres en blok kode. 
 Hvis betingelsen er falsk, så udføres en anden blok kode.
 
@@ -40,17 +40,17 @@ void Start()
 ```
 
 Syntaksen `GetComponent<Rigidbody>()` er måske jeres allerførste gang i ser en funktion. 
-Selve `GetComponent` er en navnet på den funktion. Denne specifikke funktion findes på alle MonoBehaviours i Unity.
+Selve `GetComponent` er navnet på funktionen. Denne specifikke funktion findes på alle MonoBehaviours i Unity.
 Det næste er `<RigidBody>` og det er fordi `GetComponent` tager en type som <tooltip term="argument">argument</tooltip> og returnere en reference til den første komponent af den type på objektet.
 
-Altså `GetComponent<RigidBody>()` returnere en reference til den første Rigidbody komponent på objektet.
+Altså `GetComponent<RigidBody>()` returnere en reference til den første Rigidbody komponent på objektet som scriptet er koblet til.
 
 ## Input
 
 Hvis vi vil lave en beslutning baseret på input, så kan vi bruge `Input` klassen.
 Input klassen har en funktion [`GetAxisRaw`](https://docs.unity3d.com/ScriptReference/Input.GetAxisRaw.html) som tager en string som argument. 
 Denne string repræsenterer navnet på en akse. Unity har nogle indbyggede akser som f.eks. `"Horizontal"` og `"Vertical"`.
-Når man kalder den funktion retunere den en `float` værdi fra -1 til 1 baseret på input fra computeren.
+Når man kalder funktionen [`GetAxisRaw`](https://docs.unity3d.com/ScriptReference/Input.GetAxisRaw.html) returnerer den en `float` værdi fra -1 til 1 baseret på input fra computeren.
 <tip>
 Når I bruger Rider skulle den gerne fortælle jer hvilke akser der er tilgængelige.
 </tip>
@@ -66,7 +66,7 @@ void Update()
 ```
 for at gemme to variable `horizontalInput` og `verticalInput` som indeholder input fra computeren.
 
-Vi kan så tage at blande de to variable med vores `speed` variabel for at flytte vores spiller.
+Vi kan gange disse input værdier med vores `speed` variabel  for at flytte vores spiller.
 ```C#
 void Update()
 {
@@ -76,14 +76,14 @@ void Update()
     rb.velocity = movement;
 }
 ```
-Her gemmer vi vores nuværende hastighed i `movement` og så ændrer vi `x` og `z` komponenterne baseret på input fra computeren.
+Her gemmer vi vores nuværende hastighed i `movement` og så ændrer vi `x` og `z` komponenterne baseret resultaterne fra før.
 Derefter sætter vi vores hastighed tilbage til `movement`.
 
 ## Forberedelse til Opgave 3
 
 ### Input Manager
 
-Her til sidst ville vi give lidt ekstra info til at løse den sidste opgave. Det er nemlig sådan at man kan selv lave sine egne input og akser i "Input Manager".
+Her til sidst vil vi give lidt ekstra info til at løse den sidste opgave. Det er nemlig sådan at man kan lave sine egne input og akser i "Input Manager".
 Der har vi tænkt os at lave en ny input akse vi kan bruge til at dreje spilleren med.
 
 ![inputmanager.png](inputmanager.png)
@@ -96,14 +96,14 @@ Der har vi tænkt os at lave en ny input akse vi kan bruge til at dreje spillere
 
 ### Split Spiller fra Model
 
-Men for at dreje spilleren er det lettest at fjerne modellen fra spilleren
-og, tilføje en 'capsule' som child. Dernæst, for at let indikere hvad er frem
-kan vi også tilføje en cube. Det er sådan ud:
+For at dreje spilleren er det lettest at fjerne modellen fra spilleren
+og, tilføje en 'capsule' som child. Dernæst, for at indikere hvad der er frem
+kan vi også tilføje en cube. Det ser sådan ud:
 
 ![ParentLogicVisualChild.png](ParentLogicVisualChild.png)
 
 ### Transform Rotate
-Ligesom tidligere kan vi få vores `Transform` component I koden ved at skrive GetComponent
+Ligesom tidligere kan vi få vores `Transform` component I koden ved at skrive `GetComponent`.
 ```C#
 void Update()
 {
@@ -111,8 +111,8 @@ void Update()
 }
 ```
 
-Men når vi gør det spotter vi at vi får en fejl, der nævner at den findes allerede. Det skyldes at Unity allerede har lavet den variable med den specifikke værdi for os.
-En af funktionerne vi kan kalde på den er `Rotate` et eksempel på at bruge den kan ses under:
+Men når vi gør det spotter vi at vi får en fejl som nævner at den findes allerede. Det skyldes at Unity allerede har lavet den variabel med den specifikke værdi for os.
+En af funktionerne vi kan kalde på vores `Transform` er `Rotate`, et eksempel på hvordan funktionen bruges kan ses herunder:
 
 ```C#
 void Update()
@@ -120,7 +120,7 @@ void Update()
     transform.Rotate(0, 5, 0);
 }
 ```
-Den kode rotere 5 grader om Y-aksen hvert frame. 
+Denn kode roterer 5 grader om Y-aksen hvert frame. 
 
 ## Opgave 3
 

@@ -12,6 +12,8 @@ For at starte skal i åbne Unity Hub og åbne projektet "Unity Basics" som vi ha
 
 ![unityhub.png](unityhub.png)
 
+*unity projekt navn på billede matcher ikke navn på billede*
+
 Når I har åbnet projektet, er I klar til at begynde at arbejde i Unity.
 
 ## Unity brugerflade
@@ -36,8 +38,10 @@ I kan flytte spilleren ved at klikke på objektet og trække det rundt i scenen.
 
 ![create-cube.png](create-cube.png)
 
-Vi ville også gerne bruge et gulv og til det er det nice at have et texture til det også hvilke kan downloades her:
+Vi vil også gerne have et gulv, til det er det rart at have et texture, som kan downloades her:
 - <resource src="grass.png"/>
+
+*download link virker ikke*
 
 ## Kode
 
