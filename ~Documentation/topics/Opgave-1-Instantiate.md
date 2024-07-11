@@ -15,16 +15,21 @@ Nu hvor vi har et prefab kan vi slette den originale patron uden at at få probl
 ## Instantiering
 Vi åbner vores script hvor vi skrev rotationskoden siden det er rotationen der styrer retningen vi skal skyde i.
 For at kunne skyde skal vi kunne lave nye objekter mens spillet kører, det gør man med funtionen [`Instantiate`](https://docs.unity3d.com/ScriptReference/Object.Instantiate.html).
-`Instantiate` skal bruge en reference til det objekt man gerne vil lave, så vi laver en `public` variabel `bullet` af typen `GameObject` som 
-kan indeholde referencen. Vi kan nu drag-and-droppe vores prefab af patronen over i feltet for `bullet. 
+`Instantiate` skal bruge en reference til det objekt man gerne vil lave, så vi laver en `public` variabel `bulletPrefab` af typen `GameObject` som 
+kan indeholde referencen. Vi kan nu drag-and-droppe vores prefab af patronen over i feltet for `Bullet Prefab`. 
 
-*gif af at drag-and-droppe prefab ind i variabel*
+![drag-prefab-to-inspector-field.gif](drag-prefab-to-inspector-field.gif)
 
-Tilbage i vores script kan vi nu i `Update`-funktionen kalde `Instantiate` med `bullet` som parameter.
+<note>
+Vær obs på at hvis I glemmer dette step så får i understående fejl. Dette er en meget almindelig fejl man ofte kommer til at møde. Den kendes blandt andet også under navnet "Null Reference".
+<img src="nullref.gif" alt="Dette er et eksempel på en null reference fejl"/>
+</note>
+
+Tilbage i vores script kan vi nu i `Update`-funktionen kalde `Instantiate` med `bulletPrefab` som parameter.
 ```C#
 void Update()
 {
-    Instantiate(bullet);
+    Instantiate(bulletPrefab);
 }
 ```
 Hvis vi nu starter spillet kan vi se at der kommer massere af patroner, men de starter alle der hvor den originale patron var sat.
@@ -33,7 +38,7 @@ Til at give positionen hvor vi vil lave de nye patroner bruger vi bare `transfor
 ```C#
 void Update()
 {
-    Instantiate(bullet,transform.position,quaternion.identity);
+    Instantiate(bulletPrefab, transform.position, Quaternion.identity);
 }
 ```
 ## Input GetKey
@@ -59,7 +64,7 @@ Vi kan sætte en `if`-statement rundt om kaldet til `Instantiate` således at ma
 ```C#
 if (Input.GetKeyDown(KeyCode.Space))
 {
-    Instantiate(bullet,transform.position,quaternion.identity);
+    Instantiate(bulletPrefab, transform.position, Quaternion.identity);
 }
 ```
 
@@ -69,47 +74,102 @@ gør vi brug af det som Unity kalder Physics layers. Disse layers dikterer hvad 
 nogle layers til at repræsentere vores spiller og patroner. Man kan tilføje nye physics layers ved at vælge et objekt og
 klikke på "Add layer..." knappen i Layer dropdown menuen under objektets navn.
 
-*img with creation of player & bullet layers*
+![create-layers.png](create-layers.png)
+
+<tip>
+Husk at, efter du har tilføjet layer's, skal du også gå tilbage til <b>spilleren</b> og <b>bullet</b> og vælge de ny skabte layers.
+</tip>
 
 Når man har lavet lagene skal man huske at tildele dem til ens `gameObjects`, det gør man samme sted som hvis man skulle lave nye lag.
 
 Som vist herunder kan vi i project managerens Physics sektion deaktivere kollisioner mellem Player og Bullet lagende.
 
-*gif unchecking the collision mask between player & bullet*
-
+![collisionLayerMatch.gif](collisionLayerMatch.gif)
 
 ## Cooldown
-Vi tilføjer en colldown periode mellem vores skud, således at der skal være gået mindst en rum tid fra at man har skudt 
-til at man kan skyde igen. Til vores cooldown skal vi bruge to variable til at at holde styr på 1) hvor lang cooldownen
-er go 2) hvor lang tid der er tilbage af cooldownen efter man har skudt.
+Vi tilføjer en cooldown periode mellem vores skud, således at der skal være gået mindst en rum tid fra at man har skudt 
+til at man kan skyde igen. Til vores cooldown skal vi bruge to variable til at at holde styr på værdier:
+1. Definere en konstant værdi for hvor lang tid den cooldown skal varer
+2. Definere en ændrende værdi for hvor mange sekunder der er tilbage før man må skyde igen.
 
 ```C#
-public float cooldownTime = 0.2f;
-float leftoverCooldown;
+public float cooldown = 0.2f;
+float cooldownLeft;
 ```
-Inde i den `if`-statement vi satte rundt om `Instantiate` kan vi nu sætte `leftoverCooldown` til at være lig med `cooldownTime`
-Desuden skal vi ændre på betinglesen for `if`-statementet således at vi kun kan skyde når `leftoverCooldown` er mindre eller lig 0 som vist herunder.
+Inde i den `if`-statement vi satte rundt om `Instantiate` kan vi nu sætte `cooldownLeft` til at være lig med `cooldown`
+Desuden skal vi ændre på betinglesen for `if`-statementet således at vi kun kan skyde når `cooldownLeft` er mindre eller lig 0 som vist herunder.
 
 ```C#
-if (Input.GetKeyDown(KeyCode.Space) && leftoverCooldown <= 0) 
+if (Input.GetKeyDown(KeyCode.Space) && cooldownLeft <= 0) 
 {
-    Instantiate(bullet,transform.position,quaternion.identity);
-    leftoverCooldown = cooldownTime;
+    Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+    cooldownLeft = cooldown;
 }
 ```
 
-Nu kan man, hvis man starter spillet, kun skyde en enkelt gang, fordi vi aldrig gør `leftoverCooldown` mindre. Heldigvis 
+Nu kan man, hvis man starter spillet, kun skyde en enkelt gang, fordi vi aldrig gør `cooldownLeft` mindre. Heldigvis 
 kræver det kun en enkelt linje kode før `if`-statementet hvor vi gør variablen mindre.
 ```C#
-leftoverCooldown = leftoverCooldown - Time.deltaTime;
+cooldownLeft = cooldownLeft - Time.deltaTime;
 ```
 `Time.deltaTime` er den mængde af tid der er gået siden sidste frame.
 
-## Opgave 1
-- Slå “GameObject.Destroy()” op i Unity's dokumentation
-- Prøv at bruge “GameObject.Destroy()” til at fjerne bullets efter et stykke tid
+Noter at du kommer til at møde det her mønster ret meget I spil programmering:
 
-/-- Indsæt gif her --/
+```C#
+// Værdi for cooldown tid i sekunder
+public float someCooldown = 0.2f;
+
+// Værdi for cooldown tid tilbage i sekunder
+float someCooldownLeft;
+
+void Update()
+{
+    // Tæl tiden ned
+    someCooldownLeft = someCooldownLeft - Time.deltaTime;
+    if (someCooldownLeft <= 0) 
+    {
+        // Gør noget her 
+        // ...
+        
+        // Reset hvor meget tid er tilbage
+        someCooldownLeft = someCooldown;
+    }
+}
+```
+
+<tip>
+Det kunne måske være at i skal bruge det meget snart ;)
+</tip>
+
+## Opgave 1
+- Slå `GameObject.Destroy()` op i Unity's dokumentation
+- Prøv at bruge `GameObject.Destroy()` til at fjerne bullets efter et stykke tid
+
+<deflist collapsible="true">
+<def title="Hint A" default-state="collapsed">
+    For at løse denne opgave skal I selv lave jeres egen MonoBehaviour script og tilføje det på et GameObject
+</def>
+<def title="Hint B" default-state="collapsed">
+    Det MonoBehaviour script skal tilføjes på Bullet prefab'et
+<img src="EnemyScript.gif" alt="Viser hvordan enemy script kan tilføjes"/>
+<def title="Hint C" default-state="collapsed">
+    Det er vigtigt at reset dine cooldown/lifetime til at starte ved det rigtige antal sekunder, og ikke 0.
+<code-block lang="C#">
+void Start()
+{
+    lifetimeLeft = lifetime;
+}
+</code-block>
+</def>
+</def>
+</deflist>
+
+Når opgaven er løst bør det gerne se sådan ud:
+
+![InstantiateTimed.gif](InstantiateTimed.gif)
+
+
 
 ## Bonus Opgave
 Tænk over hvordan man ville kunne blive ved med at skyde uden at give slip på skyde knappen
