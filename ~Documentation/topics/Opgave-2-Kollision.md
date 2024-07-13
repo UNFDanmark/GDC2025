@@ -23,7 +23,7 @@ kollisioner der involverer patroner, så vi benytter en `if`-statement. I den st
 hedder tags til at kende forskel på patroner og andre typer af objekter. Som vist nedenunder laver vi et tag "Bullet" og 
 tildeler det til vores prefab af patronen.
 
-*gif of making and assigning "Bullet" tag til bullet prefaben*
+![PrefabBulletTag.gif](PrefabBulletTag.gif)
 
 For at sikre at `other` er koblet til et `gameObject` med tagget "Bullet" bruger vi funtionen `CompareTag` som vist nedenunder.
 
@@ -47,3 +47,5 @@ if (other.gameObject.CompareTag("Bulllet")){
 ## Opgave 
 1. Slå “OnTriggerEnter” op i unitys dokumentation 
 2. Anvend funktionen til at lave en mønt der forsvinder når spilleren rammer den
+
+![CoinsCollect.gif](CoinsCollect.gif)
