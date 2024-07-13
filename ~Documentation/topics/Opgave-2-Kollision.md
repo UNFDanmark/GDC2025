@@ -10,6 +10,7 @@ if (Input.GetKeyDown(KeyCode.Space) && leftoverCooldown <= 0)
     GameObject bullet = Instantiate(bulletPrefab,transform.position,quaternion.identity);
     Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
     bulletRb.velocity = transform.forward * bulletSpeed;
+    leftoverCooldown = cooldownTime;
 }
 ```
 
