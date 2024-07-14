@@ -11,6 +11,8 @@ Alle resourcer som vi skal bruge i denne undervisning kan findes her:
 - <resource src="Skeleton_Minion.fbx"/>
 - <resource src="skeleton_texture.png"/>
 
+[Direct Download](https://github.com/UNFDanmark/GDC2024/blob/main/~Documentation/resources/ContentGDC2024.zip)
+
 ## Opsætning af Model på Spiller
 
 Når vi sætter en model på en spiller, så skal vi først importere modellen. Dette gøres ved at trække modellen ind i `Assets` mappen i Unity.
