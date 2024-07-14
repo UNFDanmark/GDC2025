@@ -3,7 +3,13 @@
 ## Download Assets
 Alle resourcer som vi skal bruge i denne undervisning kan findes her:
 
-<resource src="ContentGDC2024.zip"/>
+- <resource src="ContentGDC2024.zip"/>
+- <resource src="grass.png"/>
+- <resource src="pew.wav"/>
+- <resource src="Rogue.fbx"/>
+- <resource src="rogue_texture.png"/>
+- <resource src="Skeleton_Minion.fbx"/>
+- <resource src="skeleton_texture.png"/>
 
 ## Opsætning af Model på Spiller
 
