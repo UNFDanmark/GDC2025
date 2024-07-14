@@ -122,4 +122,43 @@ Derudover skal i også fjerne `Transition Duration` fra alle transitions. (kan g
 
 ![SkeltonAComming.gif](SkeltonAComming.gif)
 
+## Bonus opgave
+Find ud af hvordan Textures kan bruges ved at trække `grass.png` texture-et ind i `Assets` mappen og derefter trække den ind på planet.
+
+![GrassInserted.png](GrassInserted.png)
+
 ## Lyd
+
+![DragDropAudioToAudioSource.gif](DragDropAudioToAudioSource.gif)
+
+Bemærk at det satte op som en `AudioSource` og ikke en `AudioClip`. Dette er fordi `AudioSource` er det objekt der afspiller lyden, mens `AudioClip` er selve lyden.
+Denne `AudioSource` har en masse indstillinger som vi kan ændre på. Eksempelvis satte den `AudioClip` for os til at være vores reele lyd klip.
+
+![AudioSourceSettings.png](AudioSourceSettings.png)
+
+`Play On Awake` betyder at lyden spiller når scenen starter. `Loop` betyder at lyden spiller igen og igen.
+Vi ønsker at lyden skal spille når vi skyder, så vi fjerner `Play On Awake` og sikre at `Loop` er `false` da, den jo heller skal loop.
+
+## Lyd Kode
+
+```C#
+AudioSource audioSource;
+
+void Start()
+{
+    audioSource = GetComponent<AudioSource>();
+}
+
+void Update()
+{
+    if (...) // Dette er det eksisterende if statement i Shooting
+    // scriptet der styrer om spilleren skyder
+    {   
+        audioSource.Play();
+    }
+}
+```
+
+<note>
+Bemærk at lyden altså ikke får en GIF. Lidt svært at vise lyd i en GIF xD.. I har forresten samme problem i undervisningen da vi foretrækker at ikke have alle til at afspille lyd, det kan hurtigt blive meget træls for ørene o.O
+</note>
