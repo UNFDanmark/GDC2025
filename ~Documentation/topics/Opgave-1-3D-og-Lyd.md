@@ -120,6 +120,6 @@ Derudover skal i også fjerne `Transition Duration` fra alle transitions. (kan g
 ## Opgave B
 - Gør det samme for fjender men med skelet modellen.
 
-
+![SkeltonAComming.gif](SkeltonAComming.gif)
 
 ## Lyd
