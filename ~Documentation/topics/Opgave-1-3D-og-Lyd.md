@@ -2,7 +2,8 @@
 
 ## Download Assets
 Alle resourcer som vi skal bruge i denne undervisning kan findes her:
-- <resource src="ContentGDC2024.zip"/>
+
+<resource src="ContentGDC2024.zip"/>
 
 ## Opsætning af Model på Spiller
 
