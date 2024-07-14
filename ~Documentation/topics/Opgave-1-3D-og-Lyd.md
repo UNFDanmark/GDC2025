@@ -1,17 +1,7 @@
 # Del 1 (3D og Lyd)
 
 ## Download Assets
-Alle resourcer som vi skal bruge i denne undervisning kan findes her:
-
-- <resource src="ContentGDC2024.zip"/>
-- <resource src="grass.png"/>
-- <resource src="pew.wav"/>
-- <resource src="Rogue.fbx"/>
-- <resource src="rogue_texture.png"/>
-- <resource src="Skeleton_Minion.fbx"/>
-- <resource src="skeleton_texture.png"/>
-
-[Direct Download](https://github.com/UNFDanmark/GDC2024/blob/main/~Documentation/resources/ContentGDC2024.zip)
+Alle resourcer som vi skal bruge i denne undervisning kan findes her: [Direct Download](https://raw.githubusercontent.com/UNFDanmark/GDC2024/main/%7EDocumentation/resources/ContentGDC2024.zip)
 
 ## Opsætning af Model på Spiller
 
