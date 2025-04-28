@@ -8,7 +8,7 @@ For at lave UI i Unity, så skal man bruge et Canvas. Det kan laves som set heru
 
 I samme billede kan du også se hvordan man laver en tekst, som kan bruges til at vise Game Over. (hedder: `Text - TextMeshPro`)
 
-Tænker at bruge den viden til at lave denne skærm:
+Lad os bruge den viden til at lave denne skærm:
 
 ![GameOverScreen.png](GameOverScreen.png)
 
@@ -19,7 +19,7 @@ Dens struktur kan ses her:
     * Reset Text
 
 For at lave baggrunden, kan man bruge en `Image Raw` og vælge en farve.
-Dog er det vigtigt at man kan ændre mode til `stretch` for både x og y aksen, så det fylder hele skærmen.
+Det er vigtigt at man ændrer mode til `stretch` for både x og y aksen, så det fylder hele skærmen.
 
 ![FitImageToScreen.png](FitImageToScreen.png)
 
@@ -37,7 +37,7 @@ Planen er at denne tekst skal være skjult indtil spilleren dør. Dette kan gør
 
 ## Score for at dræbe fjender
 
-Tilføj så at hvis spilleren rammer en fjende, så aktiveres Game Over Canvas
+Tilføj så at hvis spilleren rammer en fjende, så aktiveres GameOverScreen.
 ```C#
 public GameObject gameOverScreen;
 
