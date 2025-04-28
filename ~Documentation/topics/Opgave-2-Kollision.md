@@ -27,7 +27,7 @@ void OnCollisionEnter (Collider other)
 }
 ```
 
-I denne funktion får man information om det andet objekt i kollisionen gennem variable `other`. Vi er kun interesserede i 
+I denne funktion får man information om det andet objekt i kollisionen gennem variablen `other`. Vi er kun interesserede i 
 kollisioner der involverer patroner, så vi benytter en `if`-statement. I den statements betingelse kan vi benytte det der 
 hedder tags til at kende forskel på patroner og andre typer af objekter. Som vist nedenunder laver vi et tag "Bullet" og 
 tildeler det til vores prefab af patronen.
