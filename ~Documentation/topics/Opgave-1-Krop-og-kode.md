@@ -1,18 +1,17 @@
 # Del 1 (Krop og kode)
 
-Velkommen, dette er starten af dit eventyr for at lære Unity!
-Vi ville nu starte med åbne projektet og se på nogle af de grundlæggende ting i Unity.
-Dette segment begynder vi også at se på, hvordan vi kan bruge kode til at interagere med vores spil.
+Velkommen, dette er starten af jeres eventyr for at lære Unity!
+Vi starter med åbne projektet og se på nogle af de grundlæggende ting i Unity.
+I dette segment begynder vi også at se på, hvordan vi kan bruge kode til at interagere med vores spil.
 
 ![unitybrugerflade](unitybrugerflade.png)
 
 
 ## Åbne projektet
-For at starte skal i åbne Unity Hub og åbne projektet "Unity Basics" som vi har gjort klar til jer.
+For at starte skal i åbne Unity Hub og åbne projektet "TheUnityProject" som vi har gjort klar til jer.
 
 ![unityhub.png](unityhub.png)
 
-*unity projekt navn på billede matcher ikke navn på billede*
 
 Når I har åbnet projektet, er I klar til at begynde at arbejde i Unity.
 
@@ -29,7 +28,7 @@ Når I har åbnet projektet, vil i se Unity brugerfladen. Her er nogle af de vig
 
 ## Projekt setup
 
-Hvis vi kigger i projekt vinduet kan vi se at vi allerede har tilføjet nogle filer for jer, deriblandt en scene for hver faggruppe, og en general GameScene hvor det endelige spil skal laves.
+Hvis vi kigger i projekt vinduet kan i se at vi allerede har tilføjet nogle filer for jer, deriblandt en scene for hver faggruppe, og en general GameScene hvor det endelige spil skal laves.
 
 ## Spiller Objektet
 
@@ -103,6 +102,6 @@ Her er jeres første opgave:
 2. Få fjenden til at skrive “hej, jeg er ond” en gang i konsollen
 
 Når i er færdige med at gentage hvad vi har lavet og lave opgaven, bør det se ud som under. 
-I er velkommen til at læse foran men så kan det hurtig blive kedeligt.
+I er velkommen til at læse forud men så kan det hurtig blive kedeligt.
 
 ![writerside64_nU9hKH4rE9.gif](writerside64_nU9hKH4rE9.gif)
