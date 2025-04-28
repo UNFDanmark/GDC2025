@@ -14,7 +14,7 @@ Når modellen er importeret, så kan vi trække modellen ind i scenen. For at g�
 
 ![Unity_jFKcQ1ewee.gif](Unity_jFKcQ1ewee.gif)
 
-Du kan passende også her vælge at slette den del af modellen som du ej behøver.
+I kan passende også her vælge at slette den del af modellen som I ikke har brug for.
 <tabs>
 <tab title="Før">
 <img src="ModelBefore.png" alt=""/>
@@ -26,7 +26,7 @@ Du kan passende også her vælge at slette den del af modellen som du ej behøve
 
 ## Idle Animation
 
-For at sæt idle animation ind på spilleren skal vi blot trække animationen ind i vores `Rogue` GameObject.
+For at sætte en idle animation ind på spilleren skal vi blot trække animationen ind i vores `Rogue` GameObject.
 
 ![InsertAnimation.gif](InsertAnimation.gif)
 
@@ -34,7 +34,7 @@ Når det er gjort skulle i gerne kunne double klikke på `Controller` (som ligge
 
 ![AnimatorWindow.png](AnimatorWindow.png)
 
-Men bemærk at den ej gentager animationen. Det skyldes at vi ikke har sat den til at loope. Dette kan gøres ved at finde animationen på modellen og vælge `Loop Time`.
+Men bemærk at den ikke gentager animationen. Det skyldes at vi ikke har sat den til at loope. Dette kan gøres ved at finde animationen på modellen og vælge `Loop Time`.
 Dette skal gøres for alle animationer I vil have til at loope.
 
 
@@ -53,18 +53,18 @@ Så skulle idle gerne virke 🕺💃
 ## Animator Window
 
 Som vi tidligere så så var der et **Animator** Window. Dette vindue er hvor vi kan lave animationer og transitions mellem dem.
-Når i åbner den ville I se nogle tabs i toppen. Disse tabs er:
+Når I åbner den ville I se nogle tabs i toppen. Disse tabs er:
 - **Parameters**: Her kan vi lave parametre som vi kan bruge til at skifte mellem animationer.
 - **Layers**: Her kan vi lave flere lag (noget vi ikke skal bruge på denne camp).
 
 For at lave en parameter skal vi trykke på `+` knappen og vælge hvilken type parameter vi vil have.
 De vigstigste typer for os er:
-- **Float**: En float er et decimal tal. Dette kan bruges til at skifte mellem animationer baseret på en værdi.
+- **Float**: En float er et decimaltal. Dette kan bruges til at skifte mellem animationer baseret på en værdi.
 - **Trigger**: En trigger er en bool der bliver sat til `true` en enkelt gang når den bliver kaldt. Men så snart der sker en transition bliver den `false`. Dette kan bruges til at skifte mellem animationer baseret på en handling.
 
 ![AnimatorControllerParams.gif](AnimatorControllerParams.gif)
 
-Tilføj nogle flere animationer (en for at gå/at løbe og en for at skyde). Vi valgte `Running_B` og `1H_Ranged_Shoot` for at gøre dette.
+Tilføj nogle flere animationer (en for at gå/at løbe og en for at skyde). Vi valgte `Running_B` og `1H_Ranged_Shoot` til dette.
 
 ![AnimatorControllerNodes.png](AnimatorControllerNodes.png)
 
@@ -130,13 +130,13 @@ Find ud af hvordan Textures kan bruges ved at trække `grass.png` texture-et ind
 
 ![DragDropAudioToAudioSource.gif](DragDropAudioToAudioSource.gif)
 
-Bemærk at det satte op som en `AudioSource` og ikke en `AudioClip`. Dette er fordi `AudioSource` er det objekt der afspiller lyden, mens `AudioClip` er selve lyden.
+Bemærk at der blev sat en `AudioSource` og ikke et `AudioClip`. Dette er fordi `AudioSource` er det objekt der afspiller lyden, mens `AudioClip` er selve lyden.
 Denne `AudioSource` har en masse indstillinger som vi kan ændre på. Eksempelvis satte den `AudioClip` for os til at være vores reele lyd klip.
 
 ![AudioSourceSettings.png](AudioSourceSettings.png)
 
 `Play On Awake` betyder at lyden spiller når scenen starter. `Loop` betyder at lyden spiller igen og igen.
-Vi ønsker at lyden skal spille når vi skyder, så vi fjerner `Play On Awake` og sikre at `Loop` er `false` da, den jo heller skal loop.
+Vi ønsker at lyden skal spille når vi skyder, så vi fjerner `Play On Awake` og sikrer os at `Loop` er `false` da, den jo heller ikke skal loope.
 
 ## Lyd Kode
 
