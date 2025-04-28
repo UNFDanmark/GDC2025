@@ -15,7 +15,7 @@ Her er der en del indstillinger at lege rundt med, men for nu trykker vi på Bak
 ![baked.png](baked.png)
 
 Det blå område der tegner sig er vores navmeshsurface. Det er det område vores enemy kan gå på.
-Desværre er det sådan at ikke alt er helt blå, det skyldes at den prøve at undgå potentielle obstacles. 
+Desværre er det sådan at ikke alt er helt blå, det skyldes at den prøver at undgå potentielle obstacles. 
 Den letteste måde at fikse det her er at vælge `CollectObjects > Current Object Hierarchy`. Som set herunder:
 
 ![fixbakednavmesh.gif](fixbakednavmesh.gif)
