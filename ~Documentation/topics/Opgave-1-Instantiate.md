@@ -1,7 +1,7 @@
 # Del 1 (Instantiate)
 
 ## Prefabs
-For at kunne skyde skal vi først lave en patron vi kan skyde med. Start med at lave en sphere og skaler den ned så den er en rimelig størrelse.
+For at kunne skyde skal vi først lave en patron vi kan skyde med. Start med at lave en sphere og skalere den ned så den er en rimelig størrelse.
 For at patronen senere kan skydes afsted får den også en `Rigidbody` component. Dernæst vil vi gerne sørge for at vi
 kan genbruge det patron objekt som vi lige har lavet, det gør vi nemt ved at vælge patronen og drag-and-droppe den ned i vores project-vindue.
 Ved at drag-and-droppe på denne måde laver man det man kalder et *prefab*, det er en kopi med alle de samme egenskaber
@@ -33,8 +33,8 @@ void Update()
 }
 ```
 Hvis vi nu starter spillet kan vi se at der kommer massere af patroner, men de starter alle der hvor den originale patron var sat.
-Heldigvis kan man også fortælle `Instantiate` hvor den skal lave det nye objekt henne, når man gør dette skal man dog osgå give en rotation med således at det nye objekt er roteret som man vil have det. 
-Til at give positionen hvor vi vil lave de nye patroner bruger vi bare `transform.position`, og som rotation bruger vi `quaternion.identity`, som vist nedenunder.
+Heldigvis kan man også fortælle `Instantiate` hvor den skal lave det nye objekt henne, når man gør dette skal man dog også give en rotation med således at det nye objekt er roteret som man vil have det. 
+Til at give positionen hvor vi vil lave de nye patroner bruger vi bare `transform.position`, og som rotation bruger vi `Quaternion.identity`, som vist nedenunder.
 ```C#
 void Update()
 {
@@ -77,7 +77,7 @@ klikke på "Add layer..." knappen i Layer dropdown menuen under objektets navn.
 ![create-layers.png](create-layers.png)
 
 <tip>
-Husk at, efter du har tilføjet layer's, skal du også gå tilbage til <b>spilleren</b> og <b>bullet</b> og vælge de ny skabte layers.
+Husk at, efter du har tilføjet layer's, skal du også gå tilbage til <b>spilleren</b> og <b>bullet</b> og vælge de nye layers.
 </tip>
 
 Når man har lavet lagene skal man huske at tildele dem til ens `gameObjects`, det gør man samme sted som hvis man skulle lave nye lag.
@@ -89,8 +89,8 @@ Som vist herunder kan vi i project managerens Physics sektion deaktivere kollisi
 ## Cooldown
 Vi tilføjer en cooldown periode mellem vores skud, således at der skal være gået mindst en rum tid fra at man har skudt 
 til at man kan skyde igen. Til vores cooldown skal vi bruge to variable til at at holde styr på værdier:
-1. Definere en konstant værdi for hvor lang tid den cooldown skal varer
-2. Definere en ændrende værdi for hvor mange sekunder der er tilbage før man må skyde igen.
+1. Definerer en konstant værdi for hvor lang tid den cooldown skal vare
+2. Definerer en værdi for hvor mange sekunder der er tilbage før man må skyde igen.
 
 ```C#
 public float cooldown = 0.2f;
