@@ -14,14 +14,14 @@ type variabelNavn = værdi;
 
 Men der findes mange flere typer end `int`. Her er nogle af de mest brugte:
 - `int` er heltal (f.eks. kan man skrive `int alder = 10;`)
-- `float` er decimaltal (f.eks. kan man skrive `float vægt = 10.5f;`)
+- `float` er kommatal (f.eks. kan man skrive `float vægt = 10.5f;`)
 - `string` er tekst (f.eks. kan man skrive `string navn = "Mikkel";`)
 - `bool` er sandt/falsk (f.eks. kan man skrive `bool erVoksen = true;`)
 
 Der er også nogle specielle typer som der kun findes i Unity:
 - `Vector3` er en 3D vektor
 - `GameObject` er et Unity objekt
-- `Transform` er en position, rotation og skala
+- `Transform` er en position, rotation og skalering
 
 Disse typer kommer vi snart til at bruge. Men vi kommer ikke selv til at fokusere på at lave vores egne typer endnu. Men det er vigtigt at huske at det er en mulighed.
 En anden vigtig detalje er at man ikke behøver at sætte en værdi. Man kalder dette for en variabel deklaration.
@@ -58,10 +58,10 @@ public class PlayerScript : MonoBehaviour
 }
 ```
 
-Hvis i bemærker, så kan i se at reglen er at variablerne er tilgængelige inde mellem hver `{}`. Så fordi `JegVirkerKunIStart` er inde i `Start` metoden's `{}`, så kan den ikke tilgås i `Update` metoden.
+Hvis i bemærker, så kan i se at reglen er at variablerne er tilgængelige inde mellem hver `{}`. Så fordi `JegVirkerKunIStart` er inde i `Start` metodens `{}`, så kan den ikke tilgås i `Update` metoden.
 
 ## Tilgængelighed i editoren
-I C# kan man definere en variabel der lever udenfor en metode som `public`. Det betyder at andre steder kan tilgå den. Så kigger vi på koden:
+I C# kan man definere en variabel der lever udenfor en metode som `public`. Det betyder at andre steder kan tilgå den. Se for eksempel koden herunder:
 ```C#
 public class PlayerScript : MonoBehaviour
 {
