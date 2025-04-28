@@ -29,7 +29,7 @@ Ellers skriver vi "Du er aight".
 ## Brug Components
 
 Snart har vi brug for at flytte vores spiller. Derfor skal vi bruge Rigidbody komponenten.
-For at gøre det kan vi gemme en reference til vores Rigidbody komponent ved at skrive:
+For at gøre det kan vi gemme en reference til vores Rigidbody komponent i en variabel ved at skrive:
 ```C#
 Rigidbody rb;
 
@@ -41,7 +41,7 @@ void Start()
 
 Syntaksen `GetComponent<Rigidbody>()` er måske jeres allerførste gang i ser en funktion. 
 Selve `GetComponent` er navnet på funktionen. Denne specifikke funktion findes på alle MonoBehaviours i Unity.
-Det næste er `<RigidBody>` og det er fordi `GetComponent` tager en type som <tooltip term="argument">argument</tooltip> og returnere en reference til den første komponent af den type på objektet.
+Det næste er `<RigidBody>` og det er fordi `GetComponent` tager en type som <tooltip term="argument">argument</tooltip> og returnerer en reference til den første komponent af den type på objektet.
 
 Altså `GetComponent<RigidBody>()` returnere en reference til den første Rigidbody komponent på objektet som scriptet er koblet til.
 
@@ -76,8 +76,8 @@ void Update()
     rb.velocity = movement;
 }
 ```
-Her gemmer vi vores nuværende hastighed i `movement` og så ændrer vi `x` og `z` komponenterne baseret resultaterne fra før.
-Derefter sætter vi vores hastighed tilbage til `movement`.
+Her gemmer vi vores nuværende hastighed i `movement` og så sætter vi `x` og `z` komponenterne lig resultaterne fra før.
+Derefter sætter vi vores hastighed til at være lig `movement` som indeholder vores ændringer.
 
 ## Forberedelse til Opgave 3
 
@@ -88,16 +88,16 @@ Der har vi tænkt os at lave en ny input akse vi kan bruge til at dreje spillere
 
 ![inputmanager.png](inputmanager.png)
 
-Ændre `30` til `31`, så vi har et mere input. Derefter:
-1. Kald den `TurnAround`. 
+Ret `30` til `31` i toppen af input manageren, så vi har et input mere. Scroll derefter ned i bunden og:
+1. Kald den nye akse `TurnAround`. 
 2. Sæt `Positive Button` til `right`.
 3. Sæt `Negative Button` til `left`.
 4. Sæt `Type` til `Key or Mouse Button`.
 
 ### Split Spiller fra Model
 
-For at dreje spilleren er det lettest at fjerne modellen fra spilleren
-og, tilføje en 'capsule' som child. Dernæst, for at indikere hvad der er frem
+For at dreje spilleren er det lettest at opdele modellen og spillerobjektet.
+Tilføj en 'capsule' som child af spiller. Dernæst, for at indikere hvad der er frem
 kan vi også tilføje en cube. Det ser sådan ud:
 
 ![ParentLogicVisualChild.png](ParentLogicVisualChild.png)
@@ -127,6 +127,6 @@ Denn kode roterer 5 grader om Y-aksen hvert frame.
 - Slå "Rotate unity manual" op på din favorit search engine
 - Ud fra `“TurnAround”` axis få karakteren til at dreje rundt når du trykker på `left` og `right` knapperne.
 
-Når opgaven er 
+Når opgaven er *ufærdig sætning*
 
 ![MoveAndTurn.gif](MoveAndTurn.gif)
