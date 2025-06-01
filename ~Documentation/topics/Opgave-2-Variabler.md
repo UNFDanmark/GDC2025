@@ -4,21 +4,21 @@
 Når man skriver kode får man ofte brug for at gemme nogle værdier. Disse gemmepladser kalder vi variabler.
 I C# ville en variabel kunne se sådan ud:
 ```C#
-int alder = 10;
+int health = 10;
 ```
-I koden ovenfor har vi lavet en variabel `alder` som er af typen `int` (integer) og sat den til at være 10.
-Man skal altså læse det som "alder er lig med 10". Eller:
+I koden ovenfor har vi lavet en variabel `health` som er af typen `int` (integer) og sat den til at være 10.
+Man skal altså læse det som "health er lig med 10". Eller:
 ```
 type variabelNavn = værdi;
 ```
 
 Men der findes mange flere typer end `int`. Her er nogle af de mest brugte:
-- `int` er heltal (f.eks. kan man skrive `int alder = 10;`)
+- `int` er heltal (f.eks. kan man skrive `int health = 10;`)
 - `float` er kommatal (f.eks. kan man skrive `float vægt = 10.5f;`)
 - `string` er tekst (f.eks. kan man skrive `string navn = "Mikkel";`)
 - `bool` er sandt/falsk (f.eks. kan man skrive `bool erVoksen = true;`)
 
-Der er også nogle specielle typer som der kun findes i Unity:
+Der er også nogle specielle typer, som der kun findes i Unity:
 - `Vector3` er en 3D vektor
 - `GameObject` er et Unity objekt
 - `Transform` er en position, rotation og skalering
@@ -26,7 +26,7 @@ Der er også nogle specielle typer som der kun findes i Unity:
 Disse typer kommer vi snart til at bruge. Men vi kommer ikke selv til at fokusere på at lave vores egne typer endnu. Men det er vigtigt at huske at det er en mulighed.
 En anden vigtig detalje er at man ikke behøver at sætte en værdi. Man kalder dette for en variabel deklaration.
 ```C#
-int alder;
+int health;
 ```
 Men det er jo ikke så sjovt at have en variabel uden at vide hvad den indeholder. Det er dog en god ide at sætte en værdi med det samme når det er muligt. 
 
@@ -40,20 +40,20 @@ Variabler kan være i mange forskellig steder. Hvis vi husker første lektion, s
 ```C#
 public class PlayerScript : MonoBehaviour
 {
-    int alder = 10;
+    int health = 10;
     
     // Start is called before the first frame update
     void Start()
     {
         int jegVirkerKunIStart = 20;
-        print(alder + jegVirkerKunIStart); // Skriver 30 i konsollen
+        print(health + jegVirkerKunIStart); // Skriver 30 i konsollen
     }
 
     // Update is called once per frame
     void Update()
     {
         int jegVirkerKunIUpdate = 42;
-        print(alder + jegVirkerKunIUpdate); // Skriver 52 i konsollen
+        print(health + jegVirkerKunIUpdate); // Skriver 52 i konsollen
     }
 }
 ```
@@ -65,10 +65,10 @@ I C# kan man definere en variabel der lever udenfor en metode som `public`. Det 
 ```C#
 public class PlayerScript : MonoBehaviour
 {
-    public int alder = 10;
+    public int health = 10;
 }
 ```
-Her har vi lavet variablen `alder` så den er `public` hvilket betyder at andre kan få værdien. I Unity betyder det også at den kan fås fat i fra Editoren så vi kan justere den ude fra vores script.
+Her har vi lavet variablen `health` så den er `public` hvilket betyder at andre kan få værdien. I Unity betyder det også at den kan fås fat i fra Editoren så vi kan justere den ude fra vores script.
 
 ![VariableIInspector.gif](VariableIInspector.gif)
 
@@ -100,14 +100,6 @@ public PlayerScript myPlayer;
 Og fordi vi har skrevet `public` kan den også tilgås i vores editor:
 
 ![UnityTypeInInspector.gif](UnityTypeInInspector.gif)
-
-
-## Kommentarer
-I koden ovenfor har vi også brugt noget der hedder kommentarer. Kommentarer er tekst i koden som ikke bliver kørt. De er der for at forklare hvad koden gør.
-I C# skriver man `//` for at lave en kommentar, hvor alt efter `//` vil blive ignoreret af computeren.
-```C#
-// Dette er en kommentar
-```
 
 ## Opgave 2
 1. Lav en variabel til at styre spillerens hastighed og gør så man kan tilgå den i editoren

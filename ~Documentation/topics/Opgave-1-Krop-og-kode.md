@@ -38,9 +38,6 @@ I kan flytte spilleren ved at klikke på objektet og trække det rundt i scenen.
 ![create-cube.png](create-cube.png)
 
 Vi vil også gerne have et gulv, til det er det rart at have et texture, som kan downloades her:
-- <resource src="grass.png"/>
-
-*download link virker ikke*
 
 ## Kode
 
@@ -80,6 +77,7 @@ Her er der to metoder, `Start` og `Update`.
 ## Start
 Hvis vi skriver `print("Jeg er kaldt en gang")` i `Start` metoden, vil vi se "Jeg er kaldt en gang" i konsollen når spillet starter.
 ```C#
+// Start is called before the first frame update
 void Start()
 {
     print("Jeg er kaldt en gang");
@@ -90,15 +88,23 @@ void Start()
 ## Update
 Hvis vi skriver `print("Jeg er kaldt meget")` i `Update` metoden, vil vi se "Jeg er kaldt meget" i konsollen en masse gange. En gang per frame for at være nøjagtig.
 ```C#
+// Update is called once per frame
 void Update()
 {
     print("Jeg er kaldt meget");
 }
 ```
 
+## Kommentarer
+I koden ovenfor har vi også brugt noget der hedder kommentarer. Kommentarer er tekst i koden som ikke bliver kørt. De er der for at forklare hvad koden gør.
+I C# skriver man `//` for at lave en kommentar, hvor alt efter `//` vil blive ignoreret af computeren.
+```C#
+// Dette er en kommentar
+```
+
 ## Opgave 1
 Her er jeres første opgave:
-1. Lav endnu et objekt som kan bruges om fjende, med samme komponenter som spilleren
+1. Lav endnu et objekt, der kan bruges som fjende, med samme komponenter som spilleren (foruden PlayerScript)
 2. Få fjenden til at skrive “hej, jeg er ond” en gang i konsollen
 
 Når i er færdige med at gentage hvad vi har lavet og lave opgaven, bør det se ud som under. 

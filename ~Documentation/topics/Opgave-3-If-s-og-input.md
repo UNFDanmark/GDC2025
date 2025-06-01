@@ -1,6 +1,18 @@
 # Del 3 (If&apos;s og input)
 
-## Bonus Info: C# `if`-statements
+## Forberedelse af scenen
+Vi tilføjer en Plane til scenen, så de to cubes, ikke flyver ud af skærmen. 
+Det gøres ved, at højreklikke i hierarkiet og derefter trykke på `3D Object -> Plane`. 
+
+![CreatePlane.png](CreatePlane.png)
+
+Det kan være at planet ikke ligger ved `(0,0,0)`. For at sørge for det, så kan man højreklikke på Transform-komponenten derefter trykke på `reset` 
+
+![ResetTransform.png](ResetTransform.png)
+
+
+
+## C# `if`-statements
 
 Det er tid til at introducere `if`-statements. 
 `if`-statements er en måde at lave en beslutning i koden. 
@@ -70,10 +82,10 @@ Vi kan gange disse input værdier med vores `speed` variabel  for at flytte vore
 ```C#
 void Update()
 {
-    Vector3 movement = rb.velocity;
+    Vector3 movement = rb.linearVelocity;
     movement.x = Input.GetAxisRaw("Horizontal") * speed;
     movement.z = Input.GetAxisRaw("Vertical") * speed;
-    rb.velocity = movement;
+    rb.linearVelocity = movement;
 }
 ```
 Her gemmer vi vores nuværende hastighed i `movement` og så sætter vi `x` og `z` komponenterne lig resultaterne fra før.
@@ -120,13 +132,13 @@ void Update()
     transform.Rotate(0, 5, 0);
 }
 ```
-Denn kode roterer 5 grader om Y-aksen hvert frame. 
+Denne kode roterer 5 grader om Y-aksen hvert frame. 
 
 ## Opgave 3
 
 - Slå "Rotate unity manual" op på din favorit search engine
 - Ud fra `“TurnAround”` axis få karakteren til at dreje rundt når du trykker på `left` og `right` knapperne.
 
-Når opgaven er *ufærdig sætning*
+Når opgaven er færdig *Skriv noget her*
 
 ![MoveAndTurn.gif](MoveAndTurn.gif)
