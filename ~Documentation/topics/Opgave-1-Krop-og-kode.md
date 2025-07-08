@@ -4,6 +4,8 @@ Velkommen, dette er starten af jeres eventyr for at lære Unity!
 Vi starter med åbne projektet og se på nogle af de grundlæggende ting i Unity.
 I dette segment begynder vi også at se på, hvordan vi kan bruge kode til at interagere med vores spil.
 
+<note>Nogle skærmbilleder viser Unity-version som andet end 6000.1.10f1 ignorer dette</note>
+
 ![unitybrugerflade](unitybrugerflade.png)
 
 
@@ -32,20 +34,19 @@ Hvis vi kigger i projekt vinduet kan i se at vi allerede har tilføjet nogle fil
 
 ## Spiller Objektet
 
-I jeres scene vil i kunne højre klikke og vælge "Create Cube" for at lave et nyt objekt. Dette objekt vil være jeres spiller objekt. 
+I jeres scene vil i kunne højre klikke og vælge `Create Capsule` for at lave et nyt objekt. Dette objekt vil være jeres spiller objekt. 
 I kan flytte spilleren ved at klikke på objektet og trække det rundt i scenen.
 
-![create-cube.png](create-cube.png)
-
-Vi vil også gerne have et gulv, til det er det rart at have et texture, som kan downloades her:
+![create-capsule.png](create-capsule.png)
 
 ## Kode
 
-Lav et script til spilleren ved at klikke på spilleren i hierarkiet og derefter klikke på "Add Component" i inspektoren.
+For at kunne skrive systemer, så skal man tilføje komponenter til sine GameObjects. Vi senere gerne have vores spiller til at interagerer med fysik, så vi tilføjer en `RigidBody` til et objekt, ved at trykke på `Add Component` og herefter søge efter `RigidBody`.
+
+Lav et script til spilleren ved at klikke på spilleren i hierarkiet og derefter klikke på `Add Component` i inspektoren.
 Vælg "New Script" og kald det "PlayerScript". Dobbeltklik på scriptet for at åbne det i Rider.
 
-![Unity_Kbm2Suo9W9.gif](Unity_Kbm2Suo9W9.gif)
-
+![create-script.gif](create-script.gif)
 
 I bør se en stump kode der ser sådan ud:
 ```C#
@@ -105,9 +106,9 @@ I C# skriver man `//` for at lave en kommentar, hvor alt efter `//` vil blive ig
 ## Opgave 1
 Her er jeres første opgave:
 1. Lav endnu et objekt, der kan bruges som fjende, med samme komponenter som spilleren (foruden PlayerScript)
-2. Få fjenden til at skrive “hej, jeg er ond” en gang i konsollen
+2. Få fjenden til at skrive “Hej jeg er ond” en gang i konsollen
 
 Når i er færdige med at gentage hvad vi har lavet og lave opgaven, bør det se ud som under. 
 I er velkommen til at læse forud men så kan det hurtig blive kedeligt.
 
-![writerside64_nU9hKH4rE9.gif](writerside64_nU9hKH4rE9.gif)
+![opgave1-1.gif](opgave1-1.gif)

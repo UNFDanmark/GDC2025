@@ -58,46 +58,56 @@ Det næste er `<RigidBody>` og det er fordi `GetComponent` tager en type som <to
 Altså `GetComponent<RigidBody>()` returnere en reference til den første Rigidbody komponent på objektet som scriptet er koblet til.
 
 ## Input
-For at kunne læse input i Unity, så skal man bruge en `InputAction`. Som er en samling af forskellige input muligheder, som kan bruges til at udføre det samme. Vi har så mulighed for at læse statusen af handlingen.
+Hvis vi gerne vil have vores spiller til at bevæge sig, så skal vi først læse inputtet, i den ønsket retning. For at opnå det, så skal man bruge en `InputAction`. Som er en samling af forskellige input muligheder, som kan bruges til at udføre det samme. Vi har så mulighed for at læse statussen af handlingen.
 
+```c#
+using UnityEngine.InputSystem;
 
-Vi kan gange disse input værdier med vores `speed` variabel  for at flytte vores spiller.
+//... inde i klassen
+public InputAction moveAction;
+```
+
+Før vi anvender InputAction, så skal den klargøres i Unity. Det gøres ved at skabe en ny `Up/Down/Left/Right Composite` og derefter navngive den `WASD`. Vi tilføjer de individuelle retninger ved at dobbeltklikke på dem, klik på dropdown, herefter `Listen` og til sidst angive den tiltænkte knap ved at trykke på den.
+
+![InputActionSetup.gif](InputActionSetup.gif)
+
+For at anvende en InputAction, så er det vigtigt, at den er aktiveret inden. Dette burde gøres i starten af spillet:
+```C#
+void Start() 
+{
+    //.. andre ting
+    // Aktiver Inputtet
+    moveAction.Enable();
+}
+```
+
+For at anvende inputtet så skal det læses fra `moveAction`. Det gør vi med `moveAction.ReadValue<Vector2>()`. Da der mange forskellige brugsscenarier for et `InputAction`. Så skal vi specificerer, at vi forventer en værdi af typen `Vector2`.
+
+Hvis vi får fat på resultatet, så er det strukturer på følgende måde. Vi får en vektor med 2 værdier. Den første repræsenterer x-aksen, hvis vi har trykket `a` så er værdien -1, `d` så er værdien 1 ellers er værdien 0. Den anden værdi repræsenterer y-aksen, og er det samme for `w` og `s`.
+
+Flytningen af spilleren kan opnås på følgende måde:
 ```C#
 void Update()
 {
+    // Læs inputtet
+    Vector2 moveInput = moveAction.ReadValue<Vector2>();
+    
     // Reference til spillerens nuværende hastighed
     Vector3 newVelocity = rb.linearVelocity;
     // Vi ændrer referencens hastighed i x-aksen
-    newVelocity.x = Input.GetAxisRaw("Horizontal") * speed;
+    newVelocity.x = moveInput.x * speed;
     // Vi ændrer referencens hastighed i z-aksen
-    newVelocity.z = Input.GetAxisRaw("Vertical") * speed;
+    newVelocity.z = moveInput.y * speed;
     // Vi opdaterer hastigheden
     rb.linearVelocity = movement;
 }
 ```
-Her gemmer vi vores nuværende hastighed i `movement` og så sætter vi `x` og `z` komponenterne lig resultaterne fra før.
-Derefter sætter vi vores hastighed til at være lig `movement` som indeholder vores ændringer.
+Her gemmer vi vores nuværende hastighed i `newVelocity` og så sætter vi `x` og `z` komponenterne lig med retningen vi gerne vil bevæge os, multipliceret med vores ønsket hastighed. Til sidst så opdaterer vi hastigheden på `rb` så den faktisk bevæger sig.
 
 ## Forberedelse til Opgave 3
 
-### Input Manager
-
-Her til sidst vil vi give lidt ekstra info til at løse den sidste opgave. Det er nemlig sådan at man kan lave sine egne input og akser i "Input Manager".
-Der har vi tænkt os at lave en ny input akse vi kan bruge til at dreje spilleren med.
-
-![inputmanager.png](inputmanager.png)
-
-Ret `30` til `31` i toppen af input manageren, så vi har et input mere. Scroll derefter ned i bunden og:
-1. Kald den nye akse `TurnAround`. 
-2. Sæt `Positive Button` til `right`.
-3. Sæt `Negative Button` til `left`.
-4. Sæt `Type` til `Key or Mouse Button`.
-
 ### Split Spiller fra Model
-
-For at dreje spilleren er det lettest at opdele modellen og spillerobjektet.
-Tilføj en 'capsule' som child af spiller. Dernæst, for at indikere hvad der er frem
-kan vi også tilføje en cube. Det ser sådan ud:
+For at roterer spilleren, så vælger vi at flytte modellen væk fra bevægelselogikken. Så vi splitter modellen og spilleren op i 3 dele. Først så laver vi en ny `Capsule` som skal være et barn af Spilleren. Herefter, så laver vi 
 
 ![ParentLogicVisualChild.png](ParentLogicVisualChild.png)
 
