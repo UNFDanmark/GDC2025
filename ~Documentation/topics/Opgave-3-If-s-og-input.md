@@ -58,33 +58,20 @@ Det næste er `<RigidBody>` og det er fordi `GetComponent` tager en type som <to
 Altså `GetComponent<RigidBody>()` returnere en reference til den første Rigidbody komponent på objektet som scriptet er koblet til.
 
 ## Input
+For at kunne læse input i Unity, så skal man bruge en `InputAction`. Som er en samling af forskellige input muligheder, som kan bruges til at udføre det samme. Vi har så mulighed for at læse statusen af handlingen.
 
-Hvis vi vil lave en beslutning baseret på input, så kan vi bruge `Input` klassen.
-Input klassen har en funktion [`GetAxisRaw`](https://docs.unity3d.com/ScriptReference/Input.GetAxisRaw.html) som tager en string som argument. 
-Denne string repræsenterer navnet på en akse. Unity har nogle indbyggede akser som f.eks. `"Horizontal"` og `"Vertical"`.
-Når man kalder funktionen [`GetAxisRaw`](https://docs.unity3d.com/ScriptReference/Input.GetAxisRaw.html) returnerer den en `float` værdi fra -1 til 1 baseret på input fra computeren.
-<tip>
-Når I bruger Rider skulle den gerne fortælle jer hvilke akser der er tilgængelige.
-</tip>
-
-Som eksempel kan vi skrive:
-    
-```C#
-void Update()
-{
-    float horizontalInput = Input.GetAxisRaw("Horizontal");
-    float verticalInput = Input.GetAxisRaw("Vertical");
-}
-```
-for at gemme to variable `horizontalInput` og `verticalInput` som indeholder input fra computeren.
 
 Vi kan gange disse input værdier med vores `speed` variabel  for at flytte vores spiller.
 ```C#
 void Update()
 {
-    Vector3 movement = rb.linearVelocity;
-    movement.x = Input.GetAxisRaw("Horizontal") * speed;
-    movement.z = Input.GetAxisRaw("Vertical") * speed;
+    // Reference til spillerens nuværende hastighed
+    Vector3 newVelocity = rb.linearVelocity;
+    // Vi ændrer referencens hastighed i x-aksen
+    newVelocity.x = Input.GetAxisRaw("Horizontal") * speed;
+    // Vi ændrer referencens hastighed i z-aksen
+    newVelocity.z = Input.GetAxisRaw("Vertical") * speed;
+    // Vi opdaterer hastigheden
     rb.linearVelocity = movement;
 }
 ```
