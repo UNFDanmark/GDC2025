@@ -35,7 +35,7 @@ Planen er at denne tekst skal være skjult indtil spilleren dør. Dette kan gør
 
 ![HiddenCanvas.gif](HiddenCanvas.gif)
 
-## Score for at dræbe fjender
+## GameOver Implementation
 
 Tilføj så at hvis spilleren rammer en fjende, så aktiveres GameOverScreen.
 ```C#
@@ -61,7 +61,7 @@ På klassen `SceneManager` i Unity er der en metode `LoadScene` som kan bruges t
 ```C#
 void Update()
 {
-    if (Input.GetKeyDown(KeyCode.R))
+    if (restartAction.WasPerformedThisFrame())
     {
         SceneManager.LoadScene("GameScene");
     }
