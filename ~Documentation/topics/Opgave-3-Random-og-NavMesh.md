@@ -82,6 +82,28 @@ void Update(){
 
 ![Unity_nQmMxE5WQX.gif](Unity_nQmMxE5WQX.gif)
 
+Ligenu spawner der måske lidt for mange enemies på få frames. Dette problem kan løses ret hurtigt ved at bruge samme cooldown pattern som vi
+lavede til vores `ShootingScript`. Vi skal lave to nye variabler, begge variabler skal være af typen `float`. Den ene variable skal hedde `spawnCooldown` og den anden 
+skal hedde `currentSpawnTime`.
+
+
+```c#
+public GameObject spawnObject;
+public float spawnCooldown = 2f;
+float currentSpawnTime;
+
+void Update(){
+    
+    currentSpawnTime -= Time.deltaTime;
+    if(currentSpawnTime <= 0)
+    {
+        Instantiate(spawnObject, transform.position, Quaternion.identity);
+        currentSpawnTime = spawnCooldown;
+        
+    }
+}
+```
+
 Det ville dog være kedeligt hvis de alle spawnede det sammes sted hver gang. 
 Så hvad nu hvis vi generede nogle tilfælge positioner til vores fjender. 
 Her kan vi bruge `Random.Range` der giver os et tilfældigt tal mellem 2 tal vi vælger. 
@@ -94,22 +116,10 @@ Instantiate(spawnObject, spawnPosition, Quaternion.identity);
 ```
 ![Unity_NrfFgqXym5.gif](Unity_NrfFgqXym5.gif)
 
-Det er vigtig at huske at højre side af `=` tegnet bliver kørt først. Så selvom:
-
-```C#
-val = val + 1;
-```
-
-Ikke giver mening i Matematik, så er det helt ok i programming. 
-Eksempelvis hvis `val` er `1` så når den linje er kørt ville `val` være `2` fordi:
-1. Starter med: `val = val + 1` 
-2. Men vi ved at val var `1`, altså `val = 1 + 1`
-3. Det på højre bliver kørt så `val = 2`
-4. Det betyder altså at `val` er nu `2`
-
 
 ## Opgave
 1. Få mønter til at spawne på tilfældige steder
 2. Få mønter til at rotere
+3. Få mønter til at have en spawn timer
 
 ![Unity_InlU28VqFn.gif](Unity_InlU28VqFn.gif)

@@ -23,12 +23,12 @@ Nu hvor vi kan lave patroner vil vi gerne have at patronerne også flyver frem s
 script til patronen så kan vi istedet gøre det fra spilleren af. Når man kalder `Instantiate` får man faktisk også det objekt man laver tilbage som en værdi der kan gemmes.
 Vi gemmer den nye bullet i en variabel `bullet`, så henter vi ´bullet´s rigidbody komponent og sætter dens hastighed lig med `transform.forward`, som svarer til det vores spiller anser som fremad, ganget med en variabel ´bulletSpeed´.
 ```C#
-if (Input.GetKeyDown(KeyCode.Space) && leftoverCooldown <= 0)
+if (shoot.WasPerformedThisFrame() && cooldownLeft <= 0)
 {
-    GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+    GameObject bullet = Instantiate(bulletPrefab, shootingPoint.transform.postition, Quaternion.identity);
     Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
     bulletRb.velocity = transform.forward * bulletSpeed;
-    leftoverCooldown = cooldownTime;
+    cooldownLeft = cooldownTime;
 }
 ```
 

@@ -79,7 +79,7 @@ if (shoot.WasPerformedThisFrame())
 ```
 Vi kan sætte en `if`-statement rundt om kaldet til `Instantiate` således at man kun skydder når man trykker på mellemrumstasten.
 ```C#
-if (shoot.IsPressed())
+if (shoot.WasPerformedThisFrame())
 {
     Instantiate(bulletPrefab, shootingPoint.transform.postition, Quaternion.identity);
 }
@@ -99,7 +99,7 @@ Inde i den `if`-statement vi satte rundt om `Instantiate` kan vi nu sætte `cool
 Desuden skal vi ændre på betinglesen for `if`-statementet således at vi kun kan skyde når `cooldownLeft` er mindre eller lig 0 som vist herunder.
 
 ```C#
-if (shoot.IsPressed() && cooldownLeft <= 0) 
+if (shoot.WasPerformedThisFrame() && cooldownLeft <= 0) 
 {
     Instantiate(bulletPrefab, shootingPoint.transform.postition, Quaternion.identity);
     cooldownLeft = cooldown;
@@ -113,6 +113,20 @@ cooldownLeft = cooldownLeft - Time.deltaTime;
 ```
 `Time.deltaTime` er den mængde af tid der er gået siden sidste frame.
 
+Det er vigtig at huske at højre side af `=` tegnet bliver kørt først. Så selvom:
+
+```C#
+val = val + 1;
+```
+
+Ikke giver mening i Matematik, så er det helt ok i programming.
+Eksempelvis hvis `val` er `1` så når den linje er kørt ville `val` være `2` fordi:
+1. Starter med: `val = val + 1`
+2. Men vi ved at val var `1`, altså `val = 1 + 1`
+3. Det på højre bliver kørt så `val = 2`
+4. Det betyder altså at `val` er nu `2`
+
+
 Noter at du kommer til at møde det her mønster ret meget I spil programmering:
 
 ```C#
@@ -125,7 +139,7 @@ float cooldownLeft;
 void Update()
 {
     // Tæl tiden ned
-    cooldownLeft = cooldownLeft - Time.deltaTime;
+    cooldownLeft -= Time.deltaTime;
     if (cooldown <= 0) 
     {
         // Gør noget her 
@@ -136,6 +150,7 @@ void Update()
     }
 }
 ```
+
 
 <tip>
 Det kunne måske være at i skal bruge det meget snart ;)
