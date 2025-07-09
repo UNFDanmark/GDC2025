@@ -12,14 +12,20 @@ Nu hvor vi har et prefab kan vi slette den originale patron uden at at få probl
 
 ![prefab.gif](prefab.gif)
 
+## Shooting Point
+
+![ShootingPoint.png](ShootingPoint.png)
+
+Tilføj et nyt tomt gameobjekt ved navn `ShootingPoint` som en child objekt til `SpillerModel`. Lav en ny script ved navn `ShootingScript` og tilføj den til
+`ShootingPoint` gameobjekt.
+
+
+
 ## Instantiering
-Vi åbner vores script hvor vi skrev rotationskoden siden det er rotationen der styrer retningen vi skal skyde i.
-For at kunne skyde skal vi kunne lave nye objekter mens spillet kører, det gør man med funtionen [`Instantiate`](https://docs.unity3d.com/ScriptReference/Object.Instantiate.html).
+Vi åbner vores `ShootingScript`. For at kunne skyde skal vi kunne lave nye objekter mens spillet kører, det gør man med funktionen [`Instantiate`](https://docs.unity3d.com/ScriptReference/Object.Instantiate.html).
 `Instantiate` skal bruge en reference til det objekt man gerne vil lave, så vi laver en `public` variabel `bulletPrefab` af typen `GameObject` som 
-kan indeholde referencen. Vi kan nu drag-and-droppe vores prefab af patronen over i feltet for `Bullet Prefab`. 
-
-![drag-prefab-to-inspector-field.gif](drag-prefab-to-inspector-field.gif)
-
+kan indeholde referencen. Vi kan nu drag-and-droppe vores prefab af bullet over i feltet for `Bullet Prefab`. 
+![PrefabDragInspector2.gif](PrefabDragInspector2.gif)
 <note>
 Vær obs på at hvis I glemmer dette step så får i understående fejl. Dette er en meget almindelig fejl man ofte kommer til at møde. Den kendes blandt andet også under navnet "Null Reference".
 <img src="nullref.gif" alt="Dette er et eksempel på en null reference fejl"/>
@@ -31,60 +37,53 @@ void Update()
 {
     Instantiate(bulletPrefab);
 }
+
 ```
 Hvis vi nu starter spillet kan vi se at der kommer massere af patroner, men de starter alle der hvor den originale patron var sat.
-Heldigvis kan man også fortælle `Instantiate` hvor den skal lave det nye objekt henne, når man gør dette skal man dog også give en rotation med således at det nye objekt er roteret som man vil have det. 
-Til at give positionen hvor vi vil lave de nye patroner bruger vi bare `transform.position`, og som rotation bruger vi `Quaternion.identity`, som vist nedenunder.
+Heldigvis kan man også fortælle `Instantiate` hvor den skal lave det nye objekt henne, når man gør dette skal man dog også give en rotation med således at det nye objekt er roteret som man vil have det. Tilføj
+en ny variable af typen `Transform` med navn `shootingPoint`. For at kunne `Instantiate` fra vores `shootingPoint`, skal vi nu bruge `shootingPoint.transform.postition`.
+
 ```C#
 void Update()
 {
-    Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+    Instantiate(bulletPrefab, shootingPoint.transform.postition, Quaternion.identity);
 }
 ```
-## Input GetKey
-`Input` klassen har også en metode [`GetKey`](https://docs.unity3d.com/ScriptReference/Input.GetKey.html) som tager en `KeyCode` som argument.
-`KeyCode` er en type der repræsenterer en tast på tastaturet.
-Denne metode returnerer `true` hvis tasten er trykket ned og `false` ellers.
-Tag som eksempel koden `Input.GetKey(KeyCode.W)` den ville returnere `true` hvert frame hvor W-tasten er trykket ned.
-Man kunne bl.a. blande det med viden om `if`-sætninger til at flytte en spiller fremad.
+## Input Action
+
+Først skal vi lave en ny variable med navn `shoot` af typen `InputAction` i vores `ShootingScript`
+
+
 ```C#
-if (Input.GetKey(KeyCode.W))
+    public InputAction shoot;
+```
+
+Nu skal vi bruge `shoot` variablet, for at finde ud af, om spilleren trygger på det valgte knap. I vores tilfælde har vi valgt at knappen for at skyde skal være mellemrumstasten. Der er to måder man kan tjekke input fra spilleren.
+Man kan enten bruge [`IsPressed`](https://docs.unity3d.com/Packages/com.unity.inputsystem@1.14/api/UnityEngine.InputSystem.InputAction.html)
+, her vil koden køre så længe spilleren holder knappen nede. 
+
+
+```C#
+if (shoot.IsPressed())
 {
-    print("W er holdt nede");
+    print("Mellemrumstasten er holdt nede");
 }
 ```
-Det er også muligt at bruge [`Input.GetKeyDown`](https://docs.unity3d.com/ScriptReference/Input.GetKeyDown.html) som kun returnerer `true` den første frame hvor tasten er trykket ned.
+Ellers kan man bruge [`WasPerformedThisFrame`](https://docs.unity3d.com/Packages/com.unity.inputsystem@1.14/api/UnityEngine.InputSystem.InputAction.html)
+som kun returnerer `true` den første frame hvor tasten er trykket ned. Dvs. man kun vil køre koden en enkelt gang.
 ```C#
-if (Input.GetKeyDown(KeyCode.W))
+if (shoot.WasPerformedThisFrame())
 {
-    print("W er trykket en gang");
+    print("Mellemrumstasten er trykket en gang");
 }
 ```
 Vi kan sætte en `if`-statement rundt om kaldet til `Instantiate` således at man kun skydder når man trykker på mellemrumstasten.
 ```C#
-if (Input.GetKeyDown(KeyCode.Space))
+if (shoot.IsPressed())
 {
-    Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+    Instantiate(bulletPrefab, shootingPoint.transform.postition, Quaternion.identity);
 }
 ```
-
-## Physics Layer
-Som man kan se når man starter spillet, så støder de patroner som man skyder ind i spilleren selv. Til at løse det problem
-gør vi brug af det som Unity kalder Physics layers. Disse layers dikterer hvad der kan kollidere med hvad, så vi skal bruge
-nogle layers til at repræsentere vores spiller og patroner. Man kan tilføje nye physics layers ved at vælge et objekt og
-klikke på "Add layer..." knappen i Layer dropdown menuen under objektets navn.
-
-![create-layers.png](create-layers.png)
-
-<tip>
-Husk at, efter du har tilføjet layer's, skal du også gå tilbage til <b>spilleren</b> og <b>bullet</b> og vælge de nye layers.
-</tip>
-
-Når man har lavet lagene skal man huske at tildele dem til ens `gameObjects`, det gør man samme sted som hvis man skulle lave nye lag.
-
-Som vist herunder kan vi i project managerens Physics sektion deaktivere kollisioner mellem Player og Bullet lagende.
-
-![collisionLayerMatch.gif](collisionLayerMatch.gif)
 
 ## Cooldown
 Vi tilføjer en cooldown periode mellem vores skud, således at der skal være gået mindst en rum tid fra at man har skudt 
@@ -100,9 +99,9 @@ Inde i den `if`-statement vi satte rundt om `Instantiate` kan vi nu sætte `cool
 Desuden skal vi ændre på betinglesen for `if`-statementet således at vi kun kan skyde når `cooldownLeft` er mindre eller lig 0 som vist herunder.
 
 ```C#
-if (Input.GetKeyDown(KeyCode.Space) && cooldownLeft <= 0) 
+if (shoot.IsPressed() && cooldownLeft <= 0) 
 {
-    Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+    Instantiate(bulletPrefab, shootingPoint.transform.postition, Quaternion.identity);
     cooldownLeft = cooldown;
 }
 ```
@@ -118,22 +117,22 @@ Noter at du kommer til at møde det her mønster ret meget I spil programmering:
 
 ```C#
 // Værdi for cooldown tid i sekunder
-public float someCooldown = 0.2f;
+public float cooldown = 0.2f;
 
 // Værdi for cooldown tid tilbage i sekunder
-float someCooldownLeft;
+float cooldownLeft;
 
 void Update()
 {
     // Tæl tiden ned
-    someCooldownLeft = someCooldownLeft - Time.deltaTime;
-    if (someCooldownLeft <= 0) 
+    cooldownLeft = cooldownLeft - Time.deltaTime;
+    if (cooldown <= 0) 
     {
         // Gør noget her 
         // ...
         
         // Reset hvor meget tid er tilbage
-        someCooldownLeft = someCooldown;
+        cooldownLeft = cooldown;
     }
 }
 ```

@@ -129,7 +129,7 @@ Ligesom tidligere kan vi få vores `Transform` component I koden ved at skrive `
 ```C#
 void Update()
 {
-    var transform = GetComponent<Transform>();
+    Transform transform = GetComponent<Transform>();
 }
 ```
 
@@ -148,7 +148,7 @@ Denne kode roterer 5 grader om Y-aksen hvert frame.
 
 - Slå "Rotate unity manual" op på din favorit search engine
 - For at skabe input til RotatePlayer, så skal i lave en `InputAction`, som før, der denne gang kun tager højre og venstre pile.
-- Brug de to elementer til at få spillerens model til at roterer omkring y-aksen.
+- Brug de to elementer til at få spillerens model til at rotere omkring y-aksen.
 
 
 Når opgaven er færdig så skulle det gerne se sådan her ud:

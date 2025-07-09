@@ -1,5 +1,23 @@
 # Del 2 (Kollision)
 
+## Physics Layer
+Som man kan se når man starter spillet, så støder de patroner som man skyder ind i spilleren selv. Til at løse det problem
+gør vi brug af det som Unity kalder Physics layers. Disse layers dikterer hvad der kan kollidere med hvad, så vi skal bruge
+nogle layers til at repræsentere vores spiller og patroner. Man kan tilføje nye physics layers ved at vælge et objekt og
+klikke på "Add layer..." knappen i Layer dropdown menuen under objektets navn.
+
+![create-layers.png](create-layers.png)
+
+<tip>
+Husk at, efter du har tilføjet layer's, skal du også gå tilbage til <b>spilleren</b> og <b>bullet</b> og vælge de nye layers.
+</tip>
+
+Når man har lavet lagene skal man huske at tildele dem til ens `gameObjects`, det gør man samme sted som hvis man skulle lave nye lag.
+
+Som vist herunder kan vi i project managerens Physics sektion deaktivere kollisioner mellem Player og Bullet lagende.
+
+![collisionLayerMatch.gif](collisionLayerMatch.gif)
+
 ## Påvirk andre objekter
 Nu hvor vi kan lave patroner vil vi gerne have at patronerne også flyver frem så man rigtig skyder. Istedet for at lave et 
 script til patronen så kan vi istedet gøre det fra spilleren af. Når man kalder `Instantiate` får man faktisk også det objekt man laver tilbage som en værdi der kan gemmes.
@@ -7,7 +25,7 @@ Vi gemmer den nye bullet i en variabel `bullet`, så henter vi ´bullet´s rigid
 ```C#
 if (Input.GetKeyDown(KeyCode.Space) && leftoverCooldown <= 0)
 {
-    GameObject bullet = Instantiate(bulletPrefab,transform.position,quaternion.identity);
+    GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
     Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
     bulletRb.velocity = transform.forward * bulletSpeed;
     leftoverCooldown = cooldownTime;
