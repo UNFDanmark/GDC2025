@@ -67,7 +67,7 @@ using UnityEngine.InputSystem;
 public InputAction moveAction;
 ```
 
-Før vi anvender InputAction, så skal den klargøres i Unity. Det gøres ved at skabe en ny `Up/Down/Left/Right Composite` og derefter navngive den `WASD`. Vi tilføjer de individuelle retninger ved at dobbeltklikke på dem, klik på dropdown, herefter `Listen` og til sidst angive den tiltænkte knap ved at trykke på den.
+Før vi anvender InputAction, så skal den klargøres i Unity. Det gøres ved at skabe en ny `Up/Down/Left/Right Composite` og derefter navngive den `WASD`. Vi tilføjer de individuelle retninger ved at dobbeltklikke på dem, klik på dropdown, herefter `Listen` og til sidst angive den ønsket knap ved at trykke på den.
 
 ![InputActionSetup.gif](InputActionSetup.gif)
 
@@ -92,13 +92,13 @@ void Update()
     // Læs inputtet
     Vector2 moveInput = moveAction.ReadValue<Vector2>();
     
-    // Reference til spillerens nuværende hastighed
+    // Laver en kopi af spillerens nuværende hastighed
     Vector3 newVelocity = rb.linearVelocity;
-    // Vi ændrer referencens hastighed i x-aksen
+    // Vi ændrer kopiens hastighed i x-aksen
     newVelocity.x = moveInput.x * speed;
-    // Vi ændrer referencens hastighed i z-aksen
+    // Vi ændrer kopiens hastighed i z-aksen
     newVelocity.z = moveInput.y * speed;
-    // Vi opdaterer hastigheden
+    // Vi opdaterer den rigtige hastighed
     rb.linearVelocity = movement;
 }
 ```
@@ -107,9 +107,22 @@ Her gemmer vi vores nuværende hastighed i `newVelocity` og så sætter vi `x` o
 ## Forberedelse til Opgave 3
 
 ### Split Spiller fra Model
-For at roterer spilleren, så vælger vi at flytte modellen væk fra bevægelselogikken. Så vi splitter modellen og spilleren op i 3 dele. Først så laver vi en ny `Capsule` som skal være et barn af Spilleren. Herefter, så laver vi 
+For at rotere spilleren, så vælger vi at flytte modellen væk fra bevægelseslogikken. Så vi splitter modellen og spilleren op i 3 dele. Først så laver vi en ny `Capsule` som skal være et barn af Spilleren. Herefter, så laver vi en `Cube`, som et barn af den nye `Capsule`. Ryk den lidt frem, så vi kan se hvilken retning spilleren vender. Vi vil gerne have, at kameraet bevæger sig med spilleren, så vi trækker den ind under `Spiller` men ikke `SpillerModel`.
 
-![ParentLogicVisualChild.png](ParentLogicVisualChild.png)
+![Parent-child-relation.png](Parent-child-relation.png)
+
+### Skift Komponenter
+I kan fjerne et komponent fra et objekt ved at højreklikke og vælge `Remove Component`. I skal sørge for at det kun er det yderste `Spiller` objekt som har en `Collider` og `RigidBody`. Udover det, så skal `SpillerModel` have et nyt script som skal hedde "RotatePlayer"
+
+Når i er færdig, så skulle det gerne se sådan her ud:
+
+#### Spiller
+![spiller-komponent-setup.png](spiller-komponent-setup.png)
+
+#### SpillerModel
+![spillermodel-komponent-setup.png](spillermodel-komponent-setup.png)
+#### Cube
+![cube-komponent-setup.png](cube-komponent-setup.png)
 
 ### Transform Rotate
 Ligesom tidligere kan vi få vores `Transform` component I koden ved at skrive `GetComponent`.
@@ -134,8 +147,10 @@ Denne kode roterer 5 grader om Y-aksen hvert frame.
 ## Opgave 3
 
 - Slå "Rotate unity manual" op på din favorit search engine
-- Ud fra `“TurnAround”` axis få karakteren til at dreje rundt når du trykker på `left` og `right` knapperne.
+- For at skabe input til RotatePlayer, så skal i lave en `InputAction`, som før, der denne gang kun tager højre og venstre pile.
+- Brug de to elementer til at få spillerens model til at roterer omkring y-aksen.
 
-Når opgaven er færdig *Skriv noget her*
+
+Når opgaven er færdig så skulle det gerne se sådan her ud:
 
 ![MoveAndTurn.gif](MoveAndTurn.gif)

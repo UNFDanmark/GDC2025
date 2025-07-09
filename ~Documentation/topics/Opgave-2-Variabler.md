@@ -14,7 +14,7 @@ type variabelNavn = værdi;
 
 Men der findes mange flere typer end `int`. Her er nogle af de mest brugte:
 - `int` er heltal (f.eks. kan man skrive `int health = 10;`)
-- `float` er kommatal (f.eks. kan man skrive `float vægt = 10.5f;`)
+- `float` er kommatal (f.eks. kan man skrive `float vægt = 13.7f;`)
 - `string` er tekst (f.eks. kan man skrive `string navn = "Mikkel";`)
 - `bool` er sandt/falsk (f.eks. kan man skrive `bool erVoksen = true;`)
 
