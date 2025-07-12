@@ -93,6 +93,63 @@ Vi skal huske at sørge for at vores `AIEyes` script på fjenden har en referenc
 
 
 ## Opgave 4
-In progress
+I denne opgave, vil vi gerne bruge den nye mekanik med, at fjenden kan se spilleren, til at få fjenden til at skyde efter spilleren.
+
+<deflist collapsible="true">
+<def title="Hint 1" default-state="collapsed">
+Lav et "ShootingPoint" på fjenden ligesom der blev gjort i del 1 (Instantiate).
+</def>
+<def title="Hint 2" default-state="collapsed">
+Lav et Script på "ShootingPoint", som har en offentlig funktion 
+<code-block lang="C#">
+public void Shoot() {
+    // Skyd en kugle
+}
+</code-block>
+Kald funktionen fra jeres `AIEyes` script, når i kan se spilleren.
+</def>
+<def title="Hint 3" default-state="collapsed">
+For at kalde funktionen, så kan i lave en variabel i `AIEyes` scriptet.
+
+<code-block lang="C#"> 
+public EnemyShoot enemyShoot;
+</code-block>
+
+Vi kan nu kalde funktionen ved, at skrive følgende:
+<code-block lang="C#">
+enemyShoot.Shoot();
+</code-block>
+
+Inde i Unity Editoren, så skal vi trække `EnemyShoot` scriptet fra shootingPoint hen i det tomme felt.
+
+![drag-shooting-point-to-enemy.gif](drag-shooting-point-to-enemy.gif)
+
+</def>
+<def title="Hint 4" default-state="collapsed">
+Få det nye script til at instantiere en ny kugle ligesom der blev gjort i del 1. Og få den til at bevæge sig ligesom i del 2. Det er også vigtigt, at i laver en ny `Layer` og `Tag` som hedder "EnemyBullet". Vi vil nemlig ikke have, at en fjendes bullet kan skade en anden fjende. 
+</def>
+<def title="Ekstra ting" default-state="collapsed">
+I kan måske se, at den enten spawner rigtige mange bullets eller knap så mange. Der er to ting fixes. Først og fremmest så skal i tilføje, at der en cooldown når den skyder ligesom der blev gjort ved Spilleren.
+
+Det andet som er problematisk lige nu er at når der blive skudt en ray ud fra fjenden, så er der en risiko for at den rammer en bullet. Det giver ikke så meget mening at en bullet kan fjerne synsfeltet fra fjenden. Så vi vil gerne ignorere dem, når vi skyder en ray. 
+
+For at opnå det så tilføjer vi en ny variabel til `AIEyes`
+
+<code-block lang="C#">
+public LayerMask sightMask;
+</code-block>
+
+Det her er en maske, hvor vi kan vælge hvilke `layer` som kan rammes af vores `Raycast`.
+
+<code-block lang="C#">
+hitSomething = Physics.Raycast(eyes.position, eyes.forward, out hit, sightDistance, sightMask);
+</code-block>
+
+Vi skal huske at tilføje en værdi til `sightMask` i Unity Editor. 
+
+![sight-mask.png](sight-mask.png)
+
+</def>
 
 
+</deflist>
