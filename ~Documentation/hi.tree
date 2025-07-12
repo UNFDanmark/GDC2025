@@ -15,6 +15,7 @@
         </toc-element>
         <toc-element topic="Opgave-2-Kollision.md"/>
         <toc-element topic="Opgave-3-Random-og-NavMesh.md"/>
+        <toc-element topic="Del-4-Raycasting.md"/>
     </toc-element>
     <toc-element topic="Dag-3-Diverse.md">
         <toc-element topic="Opgave-1-3D-og-Lyd.md"/>
